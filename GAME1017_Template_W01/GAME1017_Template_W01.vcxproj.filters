@@ -96,6 +96,9 @@
     <ClCompile Include="BackgroundPlayScene.cpp">
       <Filter>Sprites</Filter>
     </ClCompile>
+    <ClCompile Include="Display.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="BackgroundPlayScene.h">
       <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 #include "MathManager.h"
 #include "PlayerLaser.h"
 #include "Engine.h"
+#include "Display.h"
 
 void Player::Update()
 {
@@ -10,11 +11,11 @@ void Player::Update()
 	setBoundaries({ 0,0,WIDTH / 2, HEIGHT });
 }
 
-void Player::HandleEvents(std::vector<Sprite*> &list)
+void Player::HandleEvents()
 {	
 	Move();
 	if (EVMA::KeyReleased(SDL_SCANCODE_SPACE)) { //shooot
-		list.push_back(new PlayerLaser({ 0,0,37,13 }, { m_dst.x,m_dst.y,37,12 }, "Img/laserGreen04.png", "Laser"));
+		Display::Instance()->getList().push_back(new PlayerLaser({ 0,0,37,13 }, { m_dst.x,m_dst.y,37,12 }, "Img/laserGreen04.png", "Laser"));
 	}
 	
 }
@@ -46,22 +47,18 @@ void Player::Move()
 {
 	if (EVMA::KeyHeld(SDL_SCANCODE_LEFT) || EVMA::KeyHeld(SDL_SCANCODE_A))
 	{
-
 		setMovement(LEFT);
 	}
 	if (EVMA::KeyHeld(SDL_SCANCODE_RIGHT) || EVMA::KeyHeld(SDL_SCANCODE_D))
 	{
-
 		setMovement(RIGHT);
 	}
 	if (EVMA::KeyHeld(SDL_SCANCODE_UP) || EVMA::KeyHeld(SDL_SCANCODE_W))
 	{
-
 		setMovement(UP);
 	}
 	if (EVMA::KeyHeld(SDL_SCANCODE_DOWN) || EVMA::KeyHeld(SDL_SCANCODE_S))
 	{
-
 		setMovement(DOWN);
 	}
 	if (EVMA::KeyHeld(SDL_SCANCODE_LEFT) || EVMA::KeyHeld(SDL_SCANCODE_A))
@@ -84,7 +81,8 @@ void Player::Move()
 		if (m_frame > 8) m_frame = 0;
 		m_frameMax = 8;
 	}
-	else {
+	else 
+	{
 		if (m_frame > 8) m_frame = 0;
 		m_frameMax = 8;
 	}

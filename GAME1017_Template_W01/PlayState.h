@@ -5,7 +5,7 @@
 
 class PlayState : public State {
 private: //private properties
-	std::vector <Sprite*> DisplayList;
+	//std::vector <Sprite*> DisplayList;
 
 public: //public methods
 	PlayState();

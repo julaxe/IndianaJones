@@ -16,7 +16,7 @@ public:
 		m_angle = 90; m_type = PLAYER;
 	}
 	void Update();
-	void HandleEvents(std::vector<Sprite*>& list);
+	void HandleEvents();
 	void setMovement(Directions);
 	void Move();
 };
