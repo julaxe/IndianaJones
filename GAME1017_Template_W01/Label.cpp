@@ -21,6 +21,10 @@ void Label::Render()
 	SDL_RenderCopyF(Engine::Instance().GetRenderer(), m_pTexture, 0, &m_rTextRect);
 }
 
+void Label::Update()
+{
+}
+
 void Label::SetText(const char* str)
 {
 	strcpy_s(m_String, 256, str);

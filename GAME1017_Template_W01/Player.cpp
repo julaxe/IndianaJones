@@ -6,7 +6,7 @@
 #include "Display.h"
 #include "SoundManager.h"
 
-
+int Player::m_score = 0;
 void Player::Update()
 {
 	Animate();
@@ -20,7 +20,6 @@ void Player::HandleEvents()
 
 		Display::Instance()->getList().push_back(new PlayerLaser({ 0,0,37,13 }, { m_dst.x,m_dst.y,37,12 }, "Img/laserGreen04.png", "Laser"));
 		SOMA::PlaySound("laserGreen", 0, 0);
-f
 	}
 	
 }

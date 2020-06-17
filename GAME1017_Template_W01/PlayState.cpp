@@ -8,7 +8,11 @@
 #include "AnimationExplosion.h"
 #include "Display.h"
 #include "SoundManager.h"
-
+#include "ScoreLabel.h"
+#include "FontManager.h"
+#include "EventManager.h"
+#include "StateManager.h"
+#include "PauseState.h"
 
 PlayState::PlayState()
 {
@@ -17,11 +21,17 @@ PlayState::PlayState()
 
 void PlayState::Update()
 {
-	for (auto d : Display::Instance()->getList()) {
-		d->Update();
+	if (!m_pause) {
+		for (auto d : Display::Instance()->getList()) {
+			d->Update();
+		}
+		for (auto d : Display::Instance()->getListLabels()) {
+			d->Update();
+		}
+	
+		CreateEnemies();
+		CheckCollision();
 	}
-	CreateEnemies();
-	CheckCollision();
 }
 
 void PlayState::Render()
@@ -29,12 +39,26 @@ void PlayState::Render()
 	for (auto d : Display::Instance()->getList()) {
 		d->Render();
 	}
+	for (auto d : Display::Instance()->getListLabels()) {
+		d->Render();
+	}
 }
 
 void PlayState::HandleEvents()
 {
-	for (int i = 0; i < Display::Instance()->getList().size();i++) {
-		Display::Instance()->getList()[i]->HandleEvents();
+	if (!m_pause) {
+		for (int i = 0; i < Display::Instance()->getList().size(); i++) {
+			Display::Instance()->getList()[i]->HandleEvents();
+		}
+	}
+	if (EVMA::KeyReleased(SDL_SCANCODE_P)) {
+		if (!m_pause) {
+			STMA::PushState(new PauseState());
+		}
+		else {
+			STMA::PopState();
+		}
+		m_pause = !m_pause;
 	}
 }
 
@@ -68,6 +92,7 @@ void PlayState::CheckCollision()
 					if (COMA::AABBCheck(*Display::Instance()->getList()[i]->GetDstP(), *Display::Instance()->getList()[j]->GetDstP())) {
 						Display::Instance()->getList().push_back(new AnimationExplosion({ 0,0,32,32 }, { Display::Instance()->getList()[i]->GetDstP()->x,Display::Instance()->getList()[i]->GetDstP()->y,32,32 },
 							"Img/explosion.png", "explosion", 0, 6, 4));
+						Player::m_score += 20;
 						delete Display::Instance()->getList()[i];
 						Display::Instance()->getList()[i] = nullptr;
 						delete Display::Instance()->getList()[j];
@@ -119,11 +144,17 @@ void PlayState::CheckCollision()
 
 void PlayState::Enter()
 {
+	//init Labels
+	FOMA::RegisterFont("Img/alpha_echo.ttf", "alpha", 40);
 	srand(time(NULL));
+	//BACKGROUND AND PLAYER -- initial elements
 	Display::Instance()->getList().push_back(new BackgroundPlayScene({ 0,0,600,360}, { 0,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background"));
 	Display::Instance()->getList().push_back(new BackgroundPlayScene({ 0,0,600,360}, { WIDTH*1.25,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background2"));
 	Display::Instance()->getList().push_back(new  Player({ 0,0,40,57 }, { WIDTH / 3,HEIGHT / 2,40,57 }, "Img/Enemies.png", "player",0, 4, 4));
-
+	
+	//LABELS
+	Display::Instance()->getListLabels().push_back(new ScoreLabel("alpha", 10, 10, "SCORE: "));
+	//SOUND
 	SOMA::Load("Aud/moonSonata.wav", "background", SOUND_MUSIC);
 	SOMA::PlayMusic("background");
 	SOMA::Load("Aud/laser.wav", "laserGreen", SOUND_SFX);

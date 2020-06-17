@@ -14,7 +14,6 @@ public: // Public methods.
 	static void RegisterTexture(const char* path, const std::string key);
 	static SDL_Texture* GetTexture(const std::string key);
 	static void Quit();
-
 private: // Private properties.
 	static std::map<std::string, SDL_Texture*> s_textures;
 

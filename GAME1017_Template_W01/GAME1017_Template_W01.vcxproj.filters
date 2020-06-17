@@ -28,6 +28,9 @@
     <Filter Include="Sprites">
       <UniqueIdentifier>{5d6f8d2f-d755-495d-917d-6474ccf4da57}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Labels">
+      <UniqueIdentifier>{0c1e3824-f0da-4dd7-bc34-9d87867bd01d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -84,9 +87,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="Label.cpp">
-      <Filter>Sprites</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyLaser.cpp">
       <Filter>Sprites</Filter>
     </ClCompile>
@@ -98,6 +98,15 @@
     </ClCompile>
     <ClCompile Include="Display.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Labels</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,9 +170,6 @@
     <ClInclude Include="PlayerLaser.h">
       <Filter>Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="Label.h">
-      <Filter>Sprites</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyLaser.h">
       <Filter>Sprites</Filter>
     </ClInclude>
@@ -175,6 +181,15 @@
     </ClInclude>
     <ClInclude Include="Display.h">
       <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreLabel.h">
+      <Filter>Labels</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

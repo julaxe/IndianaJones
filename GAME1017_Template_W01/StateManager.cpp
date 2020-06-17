@@ -2,14 +2,20 @@
 
 void StateManager::Update()
 {
-	if (!s_states.empty()) // empty() and back() are methods of the vector type.
-		s_states.back()->Update();
+	if (!s_states.empty()) {
+		for (auto s : s_states) {
+			s->Update();
+		}
+	}
 }
 
 void StateManager::Render()
 {
-	if (!s_states.empty())
-		s_states.back()->Render();
+	if (!s_states.empty()) {
+		for (auto s : s_states) {
+			s->Render();
+		}
+	}
 }
 
 void StateManager::PushState(State * pState)

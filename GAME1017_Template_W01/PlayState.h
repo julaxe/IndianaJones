@@ -19,4 +19,5 @@ public: //public methods
 	void CheckCollision();
 
 private: //private methods
+	bool m_pause = false;
 };

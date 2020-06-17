@@ -64,9 +64,13 @@ void Engine::Sleep()
 
 void Engine::HandleEvents()
 {
+
 	EVMA::HandleEvents();
-	for (auto s : STMA::GetStates()) {
-		s->HandleEvents();
+	if (STMA::GetStates().size() > 0) {
+		for (int i = 0; i < STMA::GetStates().size(); i++) {
+			STMA::GetStates()[i]->HandleEvents();
+			STMA::GetStates().shrink_to_fit();
+		}
 	}
 }
 

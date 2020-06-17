@@ -1,5 +1,6 @@
 #pragma once
 #include "Sprite.h"
+#include "Label.h"
 #include<vector>
 
 class Display {
@@ -10,10 +11,12 @@ public:
 		}
 		return m_Instance;
 	}
-	std::vector<Sprite*> &getList() { return list; }
-	void Add(Sprite* s) { list.push_back(s); }
+	std::vector<Sprite*> &getList() { return listSprites; }
+	std::vector<Label*> &getListLabels() { return listLabels; }
+	void AddSprite(Sprite* s) { listSprites.push_back(s); }
 private:
-	std::vector<Sprite*> list;
+	std::vector<Sprite*> listSprites;
+	std::vector<Label*> listLabels;
 	static Display* m_Instance;
 	Display();
 	~Display();

@@ -32,6 +32,8 @@ void TitleState::Enter()
 
 void TitleState::Exit()
 {
+	delete m_pTitle;
+	m_pTitle = nullptr;
 }
 
 void TitleState::Resume()

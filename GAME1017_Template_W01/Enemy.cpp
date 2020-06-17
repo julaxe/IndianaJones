@@ -14,7 +14,8 @@ void Enemy::Update()
 {
 	if (iterations >= 5) 
 	{
-		m_vel += 10;
+		m_vel += 5;
+		iterations = 0;
 	}
 	m_dst.x = MAMA::LerpD(m_dst.x, m_dst.x - m_vel, 0.1);
 }
