@@ -1,6 +1,2 @@
-﻿  PlayState.cpp
-C:\Users\lucas\Documents\GitHub\SpaceOdisseyv2.0\GAME1017_Template_W01\PlayState.cpp(34,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\lucas\Documents\GitHub\SpaceOdisseyv2.0\GAME1017_Template_W01\PlayState.cpp(59,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\lucas\Documents\GitHub\SpaceOdisseyv2.0\GAME1017_Template_W01\PlayState.cpp(60,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\lucas\Documents\GitHub\SpaceOdisseyv2.0\GAME1017_Template_W01\PlayState.cpp(118,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  TitleState.cpp
   GAME1017_Template_W01.vcxproj -> C:\Users\lucas\Documents\GitHub\SpaceOdisseyv2.0\Debug\GAME1017_Template_W01.exe

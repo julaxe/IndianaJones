@@ -39,7 +39,7 @@ void PlayState::HandleEvents()
 			dynamic_cast<Enemy*>(DisplayList[i])->HandleEvents(DisplayList);
 		}
 		else {
-			DisplayList[i]->HandleEvents();
+			DisplayList[i]->HandleEvents();	
 		}
 	}
 }
