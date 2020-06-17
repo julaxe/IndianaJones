@@ -7,6 +7,8 @@
 #include "CollisionManager.h"
 #include "AnimationExplosion.h"
 #include "Display.h"
+#include "SoundManager.h"
+
 
 PlayState::PlayState()
 {
@@ -121,6 +123,12 @@ void PlayState::Enter()
 	Display::Instance()->getList().push_back(new BackgroundPlayScene({ 0,0,600,360}, { 0,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background"));
 	Display::Instance()->getList().push_back(new BackgroundPlayScene({ 0,0,600,360}, { WIDTH*1.25,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background2"));
 	Display::Instance()->getList().push_back(new  Player({ 0,0,40,57 }, { WIDTH / 3,HEIGHT / 2,40,57 }, "Img/Enemies.png", "player",0, 4, 4));
+
+	SOMA::Load("Aud/moonSonata.wav", "background", SOUND_MUSIC);
+	SOMA::PlayMusic("background");
+	SOMA::Load("Aud/laser.wav", "laserGreen", SOUND_SFX);
+	SOMA::SetAllVolume(5);
+
 }
 
 void PlayState::Exit()
