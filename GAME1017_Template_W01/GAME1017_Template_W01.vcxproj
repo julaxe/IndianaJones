@@ -128,10 +128,13 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="LoseState.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerLaser.cpp" />
     <ClCompile Include="PlayState.cpp" />
+    <ClCompile Include="QuitButton.cpp" />
+    <ClCompile Include="ResumeButton.cpp" />
     <ClCompile Include="ScoreLabel.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -157,8 +160,11 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FontManager.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="QuitButton.h" />
     <ClInclude Include="PlayerLaser.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ResumeButton.h" />
     <ClInclude Include="ScoreLabel.h" />
     <ClInclude Include="TitleButton.h" />
     <ClInclude Include="LoseState.h" />

@@ -108,6 +108,15 @@
     <ClCompile Include="PauseState.cpp">
       <Filter>States</Filter>
     </ClCompile>
+    <ClCompile Include="LoseState.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="ResumeButton.cpp">
+      <Filter>Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitButton.cpp">
+      <Filter>Buttons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -190,6 +199,15 @@
     </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>States</Filter>
+    </ClInclude>
+    <ClInclude Include="ResumeButton.h">
+      <Filter>Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitButton.h">
+      <Filter>Buttons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

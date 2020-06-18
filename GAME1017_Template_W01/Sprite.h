@@ -30,6 +30,7 @@ public: // Inherited and public.
 	ObjectType GetType() { return m_type; }
 	void setBoundaries(SDL_Rect b);
 	bool checkBoundaries();
+	void setAlpha(SDL_Texture*s, int a);
 protected: // Private BUT inherited.
 	double m_angle;
 	SDL_Rect m_src;

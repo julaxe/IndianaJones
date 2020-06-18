@@ -13,6 +13,7 @@ public:
 	}
 	std::vector<Sprite*> &getList() { return listSprites; }
 	std::vector<Label*> &getListLabels() { return listLabels; }
+	std::vector<Label*>& getListEnd() { return listLabels; }
 	void AddSprite(Sprite* s) { listSprites.push_back(s); }
 private:
 	std::vector<Sprite*> listSprites;

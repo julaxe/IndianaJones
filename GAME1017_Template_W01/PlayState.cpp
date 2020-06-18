@@ -14,6 +14,7 @@
 #include "StateManager.h"
 #include "PauseState.h"
 
+bool PlayState::m_pause = false;
 PlayState::PlayState()
 {
 	//Enter();

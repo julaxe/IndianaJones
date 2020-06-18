@@ -50,6 +50,11 @@ bool Sprite::checkBoundaries()
 	else return false;
 }
 
+void Sprite::setAlpha(SDL_Texture*s, int a)
+{
+	SDL_SetTextureAlphaMod(s, a);
+}
+
 void AnimatedSprite::Update()
 {
 }

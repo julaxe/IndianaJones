@@ -18,6 +18,6 @@ public: //public methods
 	void CreateEnemies();
 	void CheckCollision();
 
+	static bool m_pause;
 private: //private methods
-	bool m_pause = false;
 };
