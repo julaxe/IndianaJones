@@ -9,16 +9,19 @@ PauseState::PauseState()
 
 void PauseState::Update()
 {
-	m_pResumeButton->Update();
 	m_pQuitButton->Update();
+	if (!QuitButton::pressed)
+	{
+		m_pResumeButton->Update();
+	}
 }
 
 void PauseState::Render()
 {
 	m_pPauseLabel->Render();
 	m_pPause->Render();
-	m_pResumeButton->Render();
 	m_pQuitButton->Render();
+	m_pResumeButton->Render();
 }
 
 void PauseState::Enter()

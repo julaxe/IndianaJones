@@ -28,10 +28,13 @@ void StateManager::ChangeState(State* pState)
 {
 	if (!s_states.empty())
 	{
-		s_states.back()->Exit();
-		delete s_states.back(); // De-allocating the state in the heap.
-		s_states.back() = nullptr; // Nullifying pointer to the de-allocated state.
-		s_states.pop_back(); // Removes the now-null pointer from the vector.
+		for (auto s : s_states) {
+
+			s->Exit();
+			delete s; // De-allocating the state in the heap.
+			s = nullptr; // Nullifying pointer to the de-allocated state.
+		}
+			s_states.clear(); // Removes the now-null pointer from the vector.
 	}
 	pState->Enter();
 	s_states.push_back(pState);
