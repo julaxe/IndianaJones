@@ -126,6 +126,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyLaser.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="EscapeButton.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="LoseState.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="PlayerLaser.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="QuitButton.cpp" />
+    <ClCompile Include="RestartButton.cpp" />
     <ClCompile Include="ResumeButton.cpp" />
     <ClCompile Include="ScoreLabel.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -160,10 +162,11 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FontManager.h" />
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="EscapeButton.h" />
     <ClInclude Include="QuitButton.h" />
     <ClInclude Include="PlayerLaser.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="RestartButton.h" />
     <ClInclude Include="ResumeButton.h" />
     <ClInclude Include="ScoreLabel.h" />
     <ClInclude Include="TitleButton.h" />
@@ -183,6 +186,7 @@
     <Image Include="Img\background.jpg" />
     <Image Include="Img\bg.png" />
     <Image Include="Img\bg2.png" />
+    <Image Include="Img\buttons_map.png" />
     <Image Include="img\circle.png" />
     <Image Include="Img\Enemies.png" />
     <Image Include="Img\enemyMine.png" />

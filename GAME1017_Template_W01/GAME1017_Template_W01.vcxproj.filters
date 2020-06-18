@@ -42,9 +42,6 @@
     <ClCompile Include="TitleState.cpp">
       <Filter>States</Filter>
     </ClCompile>
-    <ClCompile Include="States.cpp">
-      <Filter>States</Filter>
-    </ClCompile>
     <ClCompile Include="PlayState.cpp">
       <Filter>States</Filter>
     </ClCompile>
@@ -116,6 +113,15 @@
     </ClCompile>
     <ClCompile Include="QuitButton.cpp">
       <Filter>Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="RestartButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="States.cpp">
+      <Filter>States</Filter>
+    </ClCompile>
+    <ClCompile Include="EscapeButton.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,13 +206,16 @@
     <ClInclude Include="Config.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
-      <Filter>States</Filter>
-    </ClInclude>
     <ClInclude Include="ResumeButton.h">
       <Filter>Buttons</Filter>
     </ClInclude>
     <ClInclude Include="QuitButton.h">
+      <Filter>Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="RestartButton.h">
+      <Filter>Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="EscapeButton.h">
       <Filter>Buttons</Filter>
     </ClInclude>
   </ItemGroup>
@@ -254,6 +263,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Img\resume.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Img\buttons_map.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

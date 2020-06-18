@@ -13,6 +13,7 @@
 #include "EventManager.h"
 #include "StateManager.h"
 #include "PauseState.h"
+#include "LoseState.h"
 
 bool PlayState::m_pause = false;
 PlayState::PlayState()
@@ -52,7 +53,7 @@ void PlayState::HandleEvents()
 			Display::Instance()->getList()[i]->HandleEvents();
 		}
 	}
-	if (EVMA::KeyReleased(SDL_SCANCODE_P)) {
+	if (EVMA::KeyReleased(SDL_SCANCODE_P) || EVMA::KeyReleased(SDL_SCANCODE_RETURN)) {
 		if (!m_pause) {
 			STMA::PushState(new PauseState());
 		}
@@ -85,6 +86,7 @@ void PlayState::CreateEnemies()
 
 void PlayState::CheckCollision()
 {
+	bool GameOver = false;
 	for (int i = 0; i < Display::Instance()->getList().size(); i++) {
 		for (int j = 0; j < Display::Instance()->getList().size(); j++) {
 			//PLAYERLASERS AND ENEMIES
@@ -107,6 +109,7 @@ void PlayState::CheckCollision()
 					if (COMA::AABBCheck(*Display::Instance()->getList()[i]->GetDstP(), *Display::Instance()->getList()[j]->GetDstP())) {
 						delete Display::Instance()->getList()[j];
 						Display::Instance()->getList()[j] = nullptr;
+						GameOver = true;
 					}
 				}
 			}
@@ -116,6 +119,7 @@ void PlayState::CheckCollision()
 					if (COMA::AABBCheck(*Display::Instance()->getList()[i]->GetDstP(), *Display::Instance()->getList()[j]->GetDstP())) {
 						delete Display::Instance()->getList()[j];
 						Display::Instance()->getList()[j] = nullptr;
+						GameOver = true;
 					}
 				}
 			}
@@ -141,10 +145,15 @@ void PlayState::CheckCollision()
 		}
 	}
 	Display::Instance()->getList().erase(std::remove(Display::Instance()->getList().begin(), Display::Instance()->getList().end(), nullptr), Display::Instance()->getList().end());
+	if (GameOver) {
+		STMA::ChangeState(new LoseState());
+	}
 }
 
 void PlayState::Enter()
 {
+	Player::m_score = 0;
+	m_pause = false;
 	//init Labels
 	FOMA::RegisterFont("Img/alpha_echo.ttf", "alpha", 40);
 	srand(time(NULL));
@@ -165,6 +174,7 @@ void PlayState::Enter()
 
 void PlayState::Exit()
 {
+	Display::Instance()->getList().clear();
 }
 
 void PlayState::Resume()

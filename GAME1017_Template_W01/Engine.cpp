@@ -40,7 +40,8 @@ bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, 
 	
 	//Initialization TitleScreen
 	STMA::PushState(new TitleState());
-
+	//code for exceptions.
+	
 
 	// Final engine initialization calls.
 	m_fps = (Uint32)round((1 / (double)FPS) * 1000); // Sets FPS in milliseconds and rounds.

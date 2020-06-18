@@ -8,7 +8,6 @@ Enemy::Enemy(SDL_Rect s, SDL_FRect d, const char* path, std::string key) :Sprite
 {
 	m_type = ENEMY;
 	iterations++;
-	std::cout << iterations << std::endl;
 }
 void Enemy::Update()
 {

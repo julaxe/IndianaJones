@@ -3,6 +3,7 @@
 #include "Label.h"
 #include "ResumeButton.h"
 #include "QuitButton.h"
+#include "RestartButton.h"
 
 class PauseState : public State {
 private: //private properties
@@ -10,6 +11,7 @@ private: //private properties
 	Label* m_pPauseLabel;
 	ResumeButton* m_pResumeButton;
 	QuitButton* m_pQuitButton;
+	RestartButton* m_pRestartButton;
 public: //public methods
 	PauseState();
 	void Update();
