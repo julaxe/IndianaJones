@@ -99,9 +99,6 @@
     <ClCompile Include="Label.cpp">
       <Filter>Labels</Filter>
     </ClCompile>
-    <ClCompile Include="ScoreLabel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PauseState.cpp">
       <Filter>States</Filter>
     </ClCompile>
@@ -114,14 +111,23 @@
     <ClCompile Include="QuitButton.cpp">
       <Filter>Buttons</Filter>
     </ClCompile>
-    <ClCompile Include="RestartButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="States.cpp">
       <Filter>States</Filter>
     </ClCompile>
-    <ClCompile Include="EscapeButton.cpp">
+    <ClCompile Include="EnemyMeteor.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy2.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="RestartButton.cpp">
+      <Filter>Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="EscapeButton.cpp">
+      <Filter>Buttons</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreLabel.cpp">
+      <Filter>Labels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="EscapeButton.h">
       <Filter>Buttons</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMeteor.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy2.h">
+      <Filter>Sprites</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
