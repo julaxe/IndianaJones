@@ -215,6 +215,7 @@ void PlayState::Enter()
 	//init Labels
 	FOMA::RegisterFont("Img/alpha_echo.ttf", "alpha", 40);
 	srand(time(NULL));
+
 	//BACKGROUND AND PLAYER -- initial elements
 	Display::Instance()->getList().push_back(new Background({ 0,0,600,360}, { 0,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background", 1));
 	Display::Instance()->getList().push_back(new Background({ 0,0,600,360}, { WIDTH*1.25,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background2",1));
