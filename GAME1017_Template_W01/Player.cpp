@@ -1,7 +1,6 @@
 #include "Player.h"
 #include "EventManager.h"
 #include "MathManager.h"
-#include "PlayerLaser.h"
 #include "Engine.h"
 #include "Display.h"
 #include "SoundManager.h"
@@ -16,11 +15,6 @@ void Player::Update()
 void Player::HandleEvents()
 {	
 	Move();
-	if (EVMA::KeyReleased(SDL_SCANCODE_SPACE)) { //shooot
-
-		Display::Instance()->getList().push_back(new PlayerLaser({ 0,0,37,13 }, { m_dst.x,m_dst.y,37,12 }, "Img/laserGreen04.png", "Laser"));
-		SOMA::PlaySound("laserGreen", 0, 0);
-	}
 	
 }
 

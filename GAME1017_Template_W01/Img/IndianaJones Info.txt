@@ -1,0 +1,5 @@
+Slide- 394x389
+Idle - 319x486
+Run - 415x507
+Jump - 407x536
+Dead - 588x600
