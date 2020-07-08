@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include "Player.h"
 #include "Engine.h"
-#include "BackgroundPlayScene.h"
+#include "Background.h"
 #include <time.h>
 #include "Enemy.h"
 #include "CollisionManager.h"
@@ -216,8 +216,8 @@ void PlayState::Enter()
 	FOMA::RegisterFont("Img/alpha_echo.ttf", "alpha", 40);
 	srand(time(NULL));
 	//BACKGROUND AND PLAYER -- initial elements
-	Display::Instance()->getList().push_back(new BackgroundPlayScene({ 0,0,600,360}, { 0,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background"));
-	Display::Instance()->getList().push_back(new BackgroundPlayScene({ 0,0,600,360}, { WIDTH*1.25,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background2"));
+	Display::Instance()->getList().push_back(new Background({ 0,0,600,360}, { 0,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background", 1));
+	Display::Instance()->getList().push_back(new Background({ 0,0,600,360}, { WIDTH*1.25,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background2",1));
 	Display::Instance()->getList().push_back(new  Player({ 0,0,40,57 }, { WIDTH / 3,HEIGHT / 2,40,57 }, "Img/Enemies.png", "player",0, 4, 4));
 	
 	//LABELS
