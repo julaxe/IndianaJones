@@ -74,13 +74,13 @@ void PlayState::CreateEnemies()
 	static int iterations = 0;
 	int randomNumber = rand() % 100;
 	if (timer > respawnTimer) {
-		if (randomNumber < 50) {
+		if (randomNumber < 50) { //Creation Enemy1
 			Display::Instance()->getList().push_back(new Enemy({ 0,0,84,93 }, { WIDTH ,float(rand() % (HEIGHT - 200) + 100) , 50,57} , "Img/enemyRed1.png","Enemy"));
 		}
-		else if (randomNumber >= 50 && randomNumber < 80) {
+		else if (randomNumber >= 50 && randomNumber < 80) { //Creation Meteor
 			Display::Instance()->getList().push_back(new EnemyMeteor({ 280,214,75,60 }, { WIDTH ,float(rand() % (HEIGHT - 200) + 100) , 75,66}, "Img/Enemies.png", "EnemyMeteor"));
 		}
-		else if (randomNumber >= 80 && randomNumber < 100) {
+		else if (randomNumber >= 80 && randomNumber < 100) { //Creation Enemy2
 			Display::Instance()->getList().push_back(new Enemy2({ 0,0,75,99 }, { WIDTH ,float(rand() % (HEIGHT - 200) + 100) , 45,57 }, "Img/Enemy2.png", "Enemy2"));
 		}
 			timer = 0;
