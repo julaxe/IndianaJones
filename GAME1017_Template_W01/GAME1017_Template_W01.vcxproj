@@ -123,10 +123,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DebugManager.cpp" />
     <ClCompile Include="Display.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Enemy2.cpp" />
-    <ClCompile Include="EnemyLaser.cpp" />
-    <ClCompile Include="EnemyMeteor.cpp" />
+    <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EscapeButton.cpp" />
     <ClCompile Include="EventManager.cpp" />
@@ -134,7 +131,6 @@
     <ClCompile Include="LoseState.cpp" />
     <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerLaser.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="QuitButton.cpp" />
     <ClCompile Include="RestartButton.cpp" />
@@ -159,16 +155,12 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="DebugManager.h" />
     <ClInclude Include="Display.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Enemy2.h" />
-    <ClInclude Include="EnemyLaser.h" />
-    <ClInclude Include="EnemyMeteor.h" />
+    <ClInclude Include="Rock.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="EscapeButton.h" />
     <ClInclude Include="QuitButton.h" />
-    <ClInclude Include="PlayerLaser.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RestartButton.h" />
     <ClInclude Include="ResumeButton.h" />

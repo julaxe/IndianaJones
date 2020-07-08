@@ -15,8 +15,6 @@ public: //public methods
 	void Exit();
 	void Resume();
 	void HandleEvents();
-	void CreateEnemies();
-	void CheckCollision();
 
 	static bool m_pause;
 private: //private methods

@@ -75,18 +75,6 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerLaser.cpp">
-      <Filter>Sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyLaser.cpp">
-      <Filter>Sprites</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Sprites</Filter>
-    </ClCompile>
     <ClCompile Include="Display.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
@@ -108,9 +96,6 @@
     <ClCompile Include="States.cpp">
       <Filter>States</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy2.cpp">
-      <Filter>Sprites</Filter>
-    </ClCompile>
     <ClCompile Include="RestartButton.cpp">
       <Filter>Buttons</Filter>
     </ClCompile>
@@ -120,13 +105,16 @@
     <ClCompile Include="ScoreLabel.cpp">
       <Filter>Labels</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyMeteor.cpp">
-      <Filter>Sprites</Filter>
-    </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>Buttons</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
       <Filter>Sprites</Filter>
     </ClCompile>
   </ItemGroup>
@@ -185,15 +173,6 @@
     <ClInclude Include="Player.h">
       <Filter>Sprites</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerLaser.h">
-      <Filter>Sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyLaser.h">
-      <Filter>Sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Sprites</Filter>
-    </ClInclude>
     <ClInclude Include="Display.h">
       <Filter>Managers</Filter>
     </ClInclude>
@@ -218,16 +197,13 @@
     <ClInclude Include="EscapeButton.h">
       <Filter>Buttons</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyMeteor.h">
-      <Filter>Sprites</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy2.h">
-      <Filter>Sprites</Filter>
-    </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Rock.h">
       <Filter>Sprites</Filter>
     </ClInclude>
   </ItemGroup>

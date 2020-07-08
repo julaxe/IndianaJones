@@ -1,9 +1,9 @@
 #pragma once
 #include "Sprite.h"
 
-class Enemy2 : public Sprite {
+class Rock : public Sprite {
 public:
-	Enemy2(SDL_Rect s, SDL_FRect d, const char* path, std::string key) : Sprite(s, d, path, key)
+	Rock(SDL_Rect s, SDL_FRect d, const char* path, std::string key) : Sprite(s, d, path, key)
 	{
 		m_type = ENEMY2;
 	}
