@@ -48,18 +48,24 @@ void Player::Update()
 		if (m_vel.x < 0)
 			m_vel.x = 0;
 	}
+
+	if (m_vel.y > 0) // gravity
+	{
+		m_vel.y = std::fmin(m_vel.y, 30);
+	}
 	
 
 	m_dst.x += m_vel.x; //move depends on the velocity
 	m_dst.y += m_vel.y;
 
-	m_collisionBox = { (int)m_dst.x, (int)m_dst.y,(int)(321 * m_scaleRendering),(int)(488 * m_scaleRendering) };
+	
 	Animate();
 	setBoundaries({ 0,0,WIDTH, HEIGHT });
 }
 
 void Player::HandleEvents()
 {	
+	m_collisionBox = { (int)m_dst.x, (int)m_dst.y,(int)(321 * m_scaleRendering),(int)(488 * m_scaleRendering) };
 	switch (m_currentState) {
 		case PlayerState::IDLE:
 			

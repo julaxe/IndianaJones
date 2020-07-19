@@ -43,7 +43,7 @@ void LevelManager::DrawCollisionBoxes()
 		for (auto tile : col)
 		{
 			if (tile != nullptr)
-				DEMA::DrawRect(tile->getCollisionBox(), { 1,1,1,1 });
+				DEMA::DrawRect(tile->getCollisionBox(), { 255,255,255,255 });
 		}
 	}
 }

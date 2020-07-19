@@ -48,7 +48,7 @@ protected: // Private BUT inherited.
 	std::string m_key;
 	ObjectType m_type;
 	SDL_Rect m_collisionBox;
-	float m_gravity = 0.7f;
+	float m_gravity = 0.5f;
 	float m_friction = 1.0f;
 private: // Private NOT inherited.
 };

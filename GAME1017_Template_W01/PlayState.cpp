@@ -41,7 +41,7 @@ void PlayState::Render()
 	{
 		for (auto p : Display::Instance()->getPlayers()->getList())
 		{
-			DEMA::DrawRect(p->getCollisionBox(), { 1,1,1,1 });
+			DEMA::DrawRect(p->getCollisionBox(), { 255,255,255,255 });
 
 		}
 		LevelManager::DrawCollisionBoxes();
