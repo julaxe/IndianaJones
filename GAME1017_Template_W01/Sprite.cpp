@@ -30,9 +30,11 @@ void Sprite::setBoundaries(SDL_Rect b)
 {
 	if (m_dst.x < b.x+10) {
 		m_dst.x = b.x+10 ;
+		m_acc.x = 0;
 	}
 	if (m_dst.x > b.x + b.w - m_dst.w) {
 		m_dst.x = b.x + b.w - m_dst.w;
+		m_acc.x = 0;
 	}
 	if (m_dst.y < b.y) {
 		m_dst.y = b.y;
@@ -55,10 +57,8 @@ void Sprite::setAlpha(SDL_Texture*s, int a)
 	SDL_SetTextureAlphaMod(s, a);
 }
 
-void AnimatedSprite::Update()
-{
-}
+void AnimatedSprite::Render() {}
 
-void AnimatedSprite::HandleEvents()
-{
-}
+void AnimatedSprite::Update() {}
+
+void AnimatedSprite::HandleEvents() {}

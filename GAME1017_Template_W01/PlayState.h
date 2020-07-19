@@ -18,4 +18,5 @@ public: //public methods
 
 	static bool m_pause;
 private: //private methods
+	bool m_debugView = false;
 };

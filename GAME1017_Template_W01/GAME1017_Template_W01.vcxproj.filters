@@ -75,9 +75,6 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Sprites</Filter>
     </ClCompile>
-    <ClCompile Include="Display.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
     <ClCompile Include="Label.cpp">
       <Filter>Labels</Filter>
     </ClCompile>
@@ -116,6 +113,12 @@
     </ClCompile>
     <ClCompile Include="Rock.cpp">
       <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelManager.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -206,15 +209,18 @@
     <ClInclude Include="Rock.h">
       <Filter>Sprites</Filter>
     </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="img\circle.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Img\Enemies.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\PlayerShip.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Img\play.png">
@@ -229,12 +235,6 @@
     <Image Include="Img\bg2.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Img\enemyMine.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\enemyRed1.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Img\exit.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -244,16 +244,13 @@
     <Image Include="Img\explosion3.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Img\laserGreen04.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\laserRed02.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Img\resume.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Img\buttons_map.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Img\IndianaJones.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

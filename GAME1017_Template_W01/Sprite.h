@@ -21,11 +21,13 @@ class Sprite // Inline class.
 {
 public: // Inherited and public.
 	Sprite(SDL_Rect s, SDL_FRect d, const char* path, std::string key);
-	void Render();
+	virtual void Render();
 	virtual void Update();
 	virtual void HandleEvents();
 	SDL_Rect* GetSrcP() { return &m_src; }
 	SDL_FRect* GetDstP() { return &m_dst; }
+	SDL_FRect& GetVelocity() { return m_vel; }
+	SDL_FRect& GetAceleration() { return m_acc; }
 	void SetPosition(float x, float y) { m_dst.x = x - m_dst.w / 2; m_dst.y = y - m_dst.h / 2; }
 	double& GetAngle() { return m_angle; }
 	void SetAngle(double a) { m_angle = a; }
@@ -33,15 +35,21 @@ public: // Inherited and public.
 	void setBoundaries(SDL_Rect b);
 	bool checkBoundaries();
 	void setAlpha(SDL_Texture*s, int a);
+	SDL_Rect& getCollisionBox() { return m_collisionBox; }
 protected: // Private BUT inherited.
 	double m_angle;
 	SDL_Rect m_src;
 	SDL_FRect m_dst;
+	SDL_FRect m_vel;
+	SDL_FRect m_acc;
 	SDL_Renderer* m_pRend;
 	SDL_Texture* m_pText;
 	const char* m_path;
 	std::string m_key;
 	ObjectType m_type;
+	SDL_Rect m_collisionBox;
+	float m_gravity = 0.7f;
+	float m_friction = 1.0f;
 private: // Private NOT inherited.
 };
 
@@ -49,7 +57,7 @@ class AnimatedSprite : public Sprite// Also inline.
 {
 public:
 	AnimatedSprite(SDL_Rect s, SDL_FRect d, const char* p, std::string k, int sstart, int smax, int nf)
-		:Sprite(s, d, p, k), m_sprite(sstart), m_spriteMax(smax), m_frameMax(nf) {}
+		:Sprite(s, d, p, k), m_spriteStart(sstart), m_spriteMax(smax), m_frameMax(nf), m_sprite(sstart){}
 	void Animate()
 	{
 
@@ -58,7 +66,7 @@ public:
 		{
 			m_frame = 0;
 			if (++m_sprite == m_spriteMax) {
-				m_sprite = 0;
+				m_sprite = m_spriteStart;
 				m_animationDone = true;
 			}
 		}
@@ -66,9 +74,11 @@ public:
 	}
 	virtual void Update();
 	virtual void HandleEvents();
+	virtual void Render();
 	bool AnimationDone() { return m_animationDone; }
 protected:
 	int m_sprite,		// The current sprite index in row.
+		m_spriteStart,	// index of the start of the animation.
 		m_spriteMax,	// The sprite index to end animation on.
 		m_frame = 0,	// Frame counter.
 		m_frameMax;		// Number of frames to display each sprite.

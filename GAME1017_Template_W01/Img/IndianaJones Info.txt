@@ -1,5 +1,19 @@
-Slide- 394x389
-Idle - 319x486
-Run - 415x507
-Jump - 407x536
 Dead - 588x600
+Idle - 321x488
+Jump - 409x538
+Run - 417x509
+Slide- 396x391
+
+Start X:
+Dead : 0
+Idle : 5880
+Jump : 9950
+Run  : 13140
+Slide: 17290
+
+Start Y:
+Dead: 0
+Idle : 600
+Jump : 1088
+Run : 1626
+Slide :2135

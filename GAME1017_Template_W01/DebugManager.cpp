@@ -40,6 +40,22 @@ void DebugManager::Quit()
 	s_colors.shrink_to_fit();
 }
 
+void DebugManager::DrawRect(SDL_Rect rect, SDL_Rect colour)
+{
+	int r = colour.x;
+	int g = colour.y;
+	int b = colour.w;
+	int a = colour.h;
+
+	SDL_Rect rectangle = { rect.x, rect.y, rect.w, rect.h };
+
+	const auto renderer = /* TheGame::Instance()->getRenderer()*/ Engine::Instance().GetRenderer();
+
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+	SDL_RenderDrawRect(renderer, &rectangle);
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+}
+
 int DebugManager::s_debugMode = 0;
 std::vector<SDL_Point> DebugManager::s_points;
 std::vector<SDL_Color> DebugManager::s_colors;

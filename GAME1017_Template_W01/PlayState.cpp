@@ -13,9 +13,11 @@
 #include "StateManager.h"
 #include "PauseState.h"
 #include "LoseState.h"
-
+#include "DebugManager.h"
+#include "LevelManager.h"
 
 bool PlayState::m_pause = false;
+Display* Display::m_Instance = nullptr;
 PlayState::PlayState()
 {
 	//Enter();
@@ -24,31 +26,32 @@ PlayState::PlayState()
 void PlayState::Update()
 {
 	if (!m_pause) {
-		for (int i = 0; i < Display::Instance()->getList().size(); i++) {
-			Display::Instance()->getList()[i]->Update();
-		}
-		for (int i = 0; i < Display::Instance()->getListLabels().size(); i++) {
-			Display::Instance()->getListLabels()[i]->Update();
-		}
+		Display::Instance()->Update();
 	}
 }
 
 void PlayState::Render()
 {
-	for (int i = 0; i < Display::Instance()->getList().size(); i++) {
-		Display::Instance()->getList()[i]->Render();
-	}
+	
+	Display::Instance()->Render();
 	for (int i = 0; i < Display::Instance()->getListLabels().size(); i++) {
 		Display::Instance()->getListLabels()[i]->Render();
+	}
+	if (m_debugView)
+	{
+		for (auto p : Display::Instance()->getPlayers()->getList())
+		{
+			DEMA::DrawRect(p->getCollisionBox(), { 1,1,1,1 });
+
+		}
+		LevelManager::DrawCollisionBoxes();
 	}
 }
 
 void PlayState::HandleEvents()
 {
 	if (!m_pause) {
-		for (int i = 0; i < Display::Instance()->getList().size(); i++) {
-			Display::Instance()->getList()[i]->HandleEvents();
-		}
+		Display::Instance()->HandleEvents();
 	}
 	if (EVMA::KeyReleased(SDL_SCANCODE_P) || EVMA::KeyReleased(SDL_SCANCODE_RETURN)) {
 		if (!m_pause) {
@@ -58,6 +61,9 @@ void PlayState::HandleEvents()
 			STMA::PopState();
 		}
 		m_pause = !m_pause;
+	}
+	if (EVMA::KeyReleased(SDL_SCANCODE_H)) {
+		m_debugView = !m_debugView;
 	}
 }
 
@@ -70,13 +76,17 @@ void PlayState::Enter()
 	FOMA::RegisterFont("Img/alpha_echo.ttf", "alpha", 40);
 	srand(time(NULL));
 
-	//BACKGROUND AND PLAYER -- initial elements
-	Display::Instance()->getList().push_back(new Background({ 0,0,600,360}, { 0,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background", 1));
-	Display::Instance()->getList().push_back(new Background({ 0,0,600,360}, { WIDTH*1.25,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background2",1));
-	Display::Instance()->getList().push_back(new  Player({ 0,0,40,57 }, { WIDTH / 3,HEIGHT / 2,40,57 }, "Img/Enemies.png", "player",0, 4, 4));
+	//BACKGROUNDS
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,600,360}, { 0,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background", 1));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,600,360}, { WIDTH*1.25,0,WIDTH * 1.3,HEIGHT*2}, "Img/bg.png", "background2",1));
+	LevelManager::GenerateTiles();
+
+	//PLAYER
+	Display::Instance()->getPlayers()->getList().push_back(new  Player({ 0,600,321,486 }, { WIDTH / 3,HEIGHT / 2,321,486 }, "Img/IndianaJones.png", "player",0, 10, 5));
 	
 	//LABELS
 	Display::Instance()->getListLabels().push_back(new ScoreLabel("alpha", 10, 10, "SCORE: "));
+	
 	//SOUND
 	SOMA::Load("Aud/moonSonata.wav", "background", SOUND_MUSIC);
 	SOMA::PlayMusic("background");
@@ -87,7 +97,7 @@ void PlayState::Enter()
 
 void PlayState::Exit()
 {
-	Display::Instance()->getList().clear();
+	//Display::Instance()->getList().clear();
 }
 
 void PlayState::Resume()

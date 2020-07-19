@@ -122,7 +122,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DebugManager.cpp" />
-    <ClCompile Include="Display.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EscapeButton.cpp" />
@@ -144,6 +144,7 @@
     <ClCompile Include="MathManager.cpp" />
     <ClCompile Include="States.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TitleButton.cpp" />
     <ClCompile Include="TitleState.cpp" />
   </ItemGroup>
@@ -155,6 +156,8 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="DebugManager.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="Rock.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EventManager.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="RestartButton.h" />
     <ClInclude Include="ResumeButton.h" />
     <ClInclude Include="ScoreLabel.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="TitleButton.h" />
     <ClInclude Include="LoseState.h" />
     <ClInclude Include="PauseState.h" />
@@ -183,17 +187,12 @@
     <Image Include="Img\bg.png" />
     <Image Include="Img\bg2.png" />
     <Image Include="Img\buttons_map.png" />
-    <Image Include="img\circle.png" />
     <Image Include="Img\Enemies.png" />
-    <Image Include="Img\enemyMine.png" />
-    <Image Include="Img\enemyRed1.png" />
     <Image Include="Img\exit.png" />
     <Image Include="Img\explosion.png" />
     <Image Include="Img\explosion3.png" />
-    <Image Include="Img\laserGreen04.png" />
-    <Image Include="Img\laserRed02.png" />
+    <Image Include="Img\IndianaJones.png" />
     <Image Include="Img\play.png" />
-    <Image Include="Img\PlayerShip.png" />
     <Image Include="Img\resume.png" />
   </ItemGroup>
   <ItemGroup>

@@ -7,8 +7,8 @@
 #include <SDL_mixer.h>
 #include <SDL_ttf.h>
 
-#define WIDTH 800
-#define HEIGHT 600
+#define WIDTH 1280
+#define HEIGHT 720
 #define FPS 60
 
 // Do not include any macros, initialized properties or full function definitions in this header.

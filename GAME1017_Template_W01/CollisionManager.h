@@ -5,6 +5,7 @@
 #include <iostream>
 #include <SDL.h>
 #include "MathManager.h"
+#include "LevelManager.h"
 
 class CollisionManager
 {
@@ -15,6 +16,8 @@ public:
 	static bool CircleAABBCheck(const SDL_FPoint object1, const double r, const SDL_FRect& object2);
 
 	static bool LinePointCheck(const SDL_FPoint object1_start, const SDL_FPoint object1_end, const SDL_FPoint object2);
+	static bool collisionWithBottonTiles(Sprite* obj, std::vector<std::vector<Tile*>> level);
+
 private:
 	CollisionManager() {}
 };

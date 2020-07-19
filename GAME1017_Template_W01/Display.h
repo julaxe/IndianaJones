@@ -1,7 +1,7 @@
 #pragma once
-#include "Sprite.h"
 #include "Label.h"
-#include<vector>
+#include "List.h"
+#include "LevelManager.h"
 
 class Display {
 public:
@@ -11,14 +11,53 @@ public:
 		}
 		return m_Instance;
 	}
-	std::vector<Sprite*> &getList() { return listSprites; }
+	
+	
+	void Update()
+	{
+		Backgrounds->Update();
+		Players->Update();
+		Tiles->Update();
+		Obstacles->Update();
+	}
+	void Render()
+	{
+		Backgrounds->Render();
+		LevelManager::DrawLevel();
+		Players->Render();
+		Tiles->Render();
+		Obstacles->Render();
+	}
+	void HandleEvents()
+	{
+		Backgrounds->HandleEvents();
+		Players->HandleEvents();
+		Tiles->HandleEvents();
+		Obstacles->HandleEvents();
+	}
+
+	List* getBackground() { return Backgrounds; }
+	List* getPlayers() { return Players; }
+	List* getTiles() { return Tiles; }
+	List* getObstacles() { return Obstacles; }
 	std::vector<Label*> &getListLabels() { return listLabels; }
-	std::vector<Label*>& getListEnd() { return listLabels; }
-	void AddSprite(Sprite* s) { listSprites.push_back(s); }
+
 private:
-	std::vector<Sprite*> listSprites;
+	List* Backgrounds;
+	List* Players;
+	List* Tiles;
+	List* Obstacles;
+	
 	std::vector<Label*> listLabels;
 	static Display* m_Instance;
-	Display();
-	~Display();
+
+	Display()
+	{
+		Backgrounds = new List();
+		Players = new List();
+		Tiles = new List();
+		Obstacles = new List();
+	}
+	~Display() {}
+
 };

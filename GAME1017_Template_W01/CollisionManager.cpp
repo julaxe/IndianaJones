@@ -42,3 +42,28 @@ bool CollisionManager::LinePointCheck(const SDL_FPoint object1_start, const SDL_
 		return true;
 	return false;
 }
+
+bool CollisionManager::collisionWithBottonTiles(Sprite* obj, std::vector<std::vector<Tile*>> level)
+{
+	int objX = obj->getCollisionBox().x;
+	int objY = obj->getCollisionBox().y;
+	int objW = obj->getCollisionBox().w;
+	int objH = obj->getCollisionBox().h;
+	int objVel = obj->GetVelocity().y;
+	int tileSize = LevelManager::m_TileSize;
+	if (level[objX / tileSize][(objY + objH + objVel + 1) / tileSize] != nullptr) // checking both tiles under him
+	{
+		obj->GetVelocity().y = 0;
+		obj->GetDstP()->y = level[objX / tileSize][(objY + objH + objVel + 1) / tileSize]->GetDstP()->y - objH - 1; //just 1 pixel above the tiles
+		obj->getCollisionBox().y = obj->GetDstP()->y;
+		return true;
+	}
+	else if (level[(objX + objW) / tileSize][(objY + objH + objVel + 1) / tileSize] != nullptr)
+	{
+		obj->GetVelocity().y = 0;
+		obj->GetDstP()->y = level[(objX + objW) / tileSize][(objY + objH + objVel + 1) / tileSize]->GetDstP()->y - objH - 1; //just 1 pixel above the tiles
+		obj->getCollisionBox().y = obj->GetDstP()->y;
+		return true;
+	}
+	return false;
+}
