@@ -6,6 +6,7 @@ public:
 	{
 		m_collisionBox = { (int)m_dst.x, (int)m_dst.y,(int)m_dst.w,(int)m_dst.h };
 	}
+	void Update() override;
 private:
 	
 

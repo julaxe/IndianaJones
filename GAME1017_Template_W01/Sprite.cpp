@@ -57,6 +57,14 @@ void Sprite::setAlpha(SDL_Texture*s, int a)
 	SDL_SetTextureAlphaMod(s, a);
 }
 
+void Sprite::Move(float velX, float velY)
+{
+	m_dst.x += velX;
+	m_dst.y += velY;
+	m_collisionBox.x = m_dst.x;
+	m_collisionBox.y = m_dst.y;
+}
+
 void AnimatedSprite::Render() {}
 
 void AnimatedSprite::Update() {}

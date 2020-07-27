@@ -27,6 +27,7 @@ void PlayState::Update()
 {
 	if (!m_pause) {
 		Display::Instance()->Update();
+		LevelManager::UpdateLevel();
 	}
 }
 
