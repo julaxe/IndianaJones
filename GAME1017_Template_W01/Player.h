@@ -17,7 +17,6 @@ public:
 	void Update();
 	void HandleEvents();
 	void setState(PlayerState);
-	void Move();
 private:
 	PlayerState m_currentState = PlayerState::IDLE;
 	SDL_RendererFlip m_RendererFlip = SDL_FLIP_NONE;

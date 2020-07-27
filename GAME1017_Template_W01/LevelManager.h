@@ -11,6 +11,7 @@ public:
 	
 	static int m_TileSize;
 	static std::vector<std::vector<Tile*>> m_level;
+	static float velocity;
 
 private:
 	static bool deleteColumnsReadyOutOfScreen();

@@ -28,7 +28,7 @@ void Player::Render()
 }
 void Player::Update()
 {
-	
+	Move(-LevelManager::velocity, 0.0f);
 	
 	m_vel.x += m_acc.x;
 	m_vel.y += m_acc.y;
@@ -139,8 +139,6 @@ void Player::HandleEvents()
 
 	}
 	
-	Move();
-	
 }
 
 void Player::setState(PlayerState state)
@@ -180,7 +178,3 @@ void Player::setState(PlayerState state)
 	}
 }
 
-void Player::Move()
-{
-	
-}

@@ -1,6 +1,6 @@
 #include "Tile.h"
-
+#include "LevelManager.h"
 void Tile::Update()
 {
-	Move(-2.0f, 0.0f);
+	Move(-LevelManager::velocity, 0.0f);
 }

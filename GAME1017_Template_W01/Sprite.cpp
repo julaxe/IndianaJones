@@ -11,7 +11,10 @@ Sprite::Sprite(SDL_Rect s, SDL_FRect d, const char* path, std::string key) {
 	m_dst.x = d.x - m_dst.w / 2;
 	m_dst.y = d.y - m_dst.h / 2;
 	m_pRend = Engine::Instance().GetRenderer();
-	TEMA::RegisterTexture(m_path, m_key);
+	if (m_path != "")
+	{
+		TEMA::RegisterTexture(m_path, m_key);
+	}
 	m_pText = TEMA::GetTexture(m_key);
 }
 void Sprite::Render() { 
