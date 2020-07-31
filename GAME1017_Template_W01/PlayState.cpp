@@ -83,7 +83,8 @@ void PlayState::Enter()
 	LevelManager::GenerateTiles();
 
 	//PLAYER
-	Display::Instance()->getPlayers()->getList().push_back(new  Player({ 0,600,321,486 }, { WIDTH / 3,HEIGHT / 2,321,486 }, "Img/IndianaJones.png", "player",0, 10, 5));
+	AnimationParameters params(0, 3, 10, 0, 6,0);
+	Display::Instance()->getPlayers()->getList().push_back(new  Player({ 0,0,50,37 }, { WIDTH / 3,HEIGHT / 2,321,486 }, "Img/adventurer1.png", "player", params));
 	
 	//LABELS
 	Display::Instance()->getListLabels().push_back(new ScoreLabel("alpha", 10, 10, "SCORE: "));

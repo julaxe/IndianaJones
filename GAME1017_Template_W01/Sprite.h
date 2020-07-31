@@ -55,24 +55,63 @@ protected: // Private BUT inherited.
 private: // Private NOT inherited.
 };
 
+struct AnimationParameters {
+	AnimationParameters(int sstart /*sstart*/, int smax /*smax*/, int nf /*nf*/, int nRows /*nRows*/, int nColumns /*nColumns*/,int initialY)
+	{
+		this->sstart = sstart;
+		this->smax = smax;
+		this->nf = nf;
+		this->nRows = nRows;
+		this->nColumns = nColumns;
+		this->initialY = initialY;
+	}
+	int sstart =0,
+		smax = 0,
+		nf = 0,
+		nRows = 0,
+		nColumns = 0,
+		frameMax = 0,
+		initialY = 0;
+};
 class AnimatedSprite : public Sprite// Also inline.
 {
 public:
-	AnimatedSprite(SDL_Rect s, SDL_FRect d, const char* p, std::string k, int sstart, int smax, int nf)
-		:Sprite(s, d, p, k), m_spriteStart(sstart), m_spriteMax(smax), m_frameMax(nf), m_sprite(sstart){}
+	AnimatedSprite(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationParameters animationP)
+		:Sprite(s, d, p, k)
+	{
+		m_params = new AnimationParameters(animationP.sstart, animationP.smax,
+			animationP.nf, animationP.nRows,
+			animationP.nColumns, animationP.initialY);
+	}
+	~AnimatedSprite()
+	{
+		delete m_params;
+		m_params = nullptr;
+	}
 	void Animate()
 	{
-
+		m_animationDone = false;
 		m_frame++;
-		if (m_frame == m_frameMax)
+		if (m_frame == m_params->nf)
 		{
 			m_frame = 0;
-			if (++m_sprite == m_spriteMax) {
-				m_sprite = m_spriteStart;
+			
+			if (m_currentRow == m_params->nRows && m_sprite == m_params->smax)
+			{
+				m_sprite = m_params->sstart;
 				m_animationDone = true;
+				m_currentRow = 0;
 			}
+			else if (m_currentRow < m_params->nRows && m_sprite == m_params->nColumns)
+			{
+				m_currentRow++;
+				m_sprite = 0;
+			}
+			
+			m_sprite++;
 		}
 		m_src.x = m_src.w * m_sprite;
+		m_src.y = m_params->initialY + (m_currentRow * m_src.h);
 	}
 	virtual void Update();
 	virtual void HandleEvents();
@@ -80,10 +119,10 @@ public:
 	bool AnimationDone() { return m_animationDone; }
 protected:
 	int m_sprite,		// The current sprite index in row.
-		m_spriteStart,	// index of the start of the animation.
-		m_spriteMax,	// The sprite index to end animation on.
 		m_frame = 0,	// Frame counter.
-		m_frameMax;		// Number of frames to display each sprite.
+		m_currentRow = 0;
+	AnimationParameters* m_params;
+		
 	bool m_animationDone = false;
 };
 

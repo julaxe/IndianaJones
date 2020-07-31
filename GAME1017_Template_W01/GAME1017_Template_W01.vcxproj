@@ -149,7 +149,6 @@
     <ClCompile Include="TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimationExplosion.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionManager.h" />

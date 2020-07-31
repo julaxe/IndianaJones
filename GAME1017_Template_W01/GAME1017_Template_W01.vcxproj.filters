@@ -122,9 +122,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AnimationExplosion.h">
-      <Filter>Animations</Filter>
-    </ClInclude>
     <ClInclude Include="TitleButton.h">
       <Filter>Buttons</Filter>
     </ClInclude>
