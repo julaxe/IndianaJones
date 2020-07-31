@@ -15,6 +15,7 @@
 #include "LoseState.h"
 #include "DebugManager.h"
 #include "LevelManager.h"
+#include "TextureManager.h"
 
 bool PlayState::m_pause = false;
 Display* Display::m_Instance = nullptr;
@@ -84,6 +85,7 @@ void PlayState::Enter()
 
 	//PLAYER
 	AnimationParameters params(0, 3, 10, 0, 6,0);
+	TEMA::RegisterTexture("Img/adventurer2.png", "player2");
 	Display::Instance()->getPlayers()->getList().push_back(new  Player({ 0,0,50,37 }, { WIDTH / 3,HEIGHT / 2,321,486 }, "Img/adventurer1.png", "player", params));
 	
 	//LABELS

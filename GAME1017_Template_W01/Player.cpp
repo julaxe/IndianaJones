@@ -6,6 +6,7 @@
 #include "SoundManager.h"
 #include "CollisionManager.h"
 #include "LevelManager.h"
+#include "TextureManager.h"
 
 int Player::m_score = 0;
 
@@ -19,9 +20,10 @@ Player::Player(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationP
 	m_vel = { 0,0 };
 	m_acc = { 0,0 };
 	m_currentState = PlayerState::JUMP;
-	m_currentJumpingState = JumpingState::FALLING;
+	m_currentJumpingState = JumpingState::FLOATING;
 	m_jumpISpeed = 15;
 	m_runningISpeed = 10;
+	m_slidingISpeed = 7;
 	m_maxVelX = 10;
 	m_maxVelY = 30;
 }
@@ -61,7 +63,7 @@ void Player::Update()
 
 	m_dst.x += m_vel.x; //move depends on the velocity
 	m_dst.y += m_vel.y;
-
+	m_collisionBox = { (int)m_dst.x, (int)m_dst.y,(int)(40 * m_scaleRendering),(int)(30 * m_scaleRendering) };
 	
 	Animate();
 	setBoundaries({ 0,0,WIDTH, HEIGHT });
@@ -69,7 +71,6 @@ void Player::Update()
 
 void Player::HandleEvents()
 {	
-	m_collisionBox = { (int)m_dst.x, (int)m_dst.y,(int)(40 * m_scaleRendering),(int)(30 * m_scaleRendering) };
 	switch (m_currentState) {
 		case PlayerState::IDLE:
 			
@@ -87,6 +88,15 @@ void Player::HandleEvents()
 						{
 							setState(PlayerState::JUMP);
 				
+						}
+						else if (EVMA::KeyHeld(SDL_SCANCODE_LCTRL))
+						{
+							setState(PlayerState::DUCK);
+
+						}
+						else if (EVMA::KeyHeld(SDL_SCANCODE_T))
+						{
+							setState(PlayerState::DIE);
 						}
 						break;
 		case PlayerState::RUN:
@@ -112,6 +122,14 @@ void Player::HandleEvents()
 						}
 						else
 							setState(PlayerState::IDLE);
+
+						if (m_currentState == PlayerState::RUN) //if you are pressing A OR D
+						{
+							if (EVMA::KeyHeld(SDL_SCANCODE_LCTRL))
+							{
+								setState(PlayerState::SLIDE);
+							}
+						}
 			
 						break;
 		case PlayerState::JUMP:
@@ -165,9 +183,32 @@ void Player::HandleEvents()
 						}
 			
 						break;
+		case PlayerState::DUCK:
+			if (!EVMA::KeyHeld(SDL_SCANCODE_LCTRL))
+			{
+				setState(PlayerState::IDLE);
+			}
+			break;
 		case PlayerState::SLIDE:
+			if (m_RendererFlip == SDL_FLIP_NONE)
+				m_vel.x = m_slidingISpeed;
+			else
+				m_vel.x = -m_slidingISpeed;
+
+			if (AnimationDone())
+			{
+				setState(PlayerState::IDLE);
+			}
 			break;
 		case PlayerState::DIE:
+			if (AnimationDone())
+			{
+				m_frame = m_params->nf + 1;
+			}
+			if (EVMA::KeyHeld(SDL_SCANCODE_R))
+			{
+				setState(PlayerState::IDLE);
+			}
 			break;
 		default:
 			break;
@@ -179,6 +220,7 @@ void Player::HandleEvents()
 void Player::setState(PlayerState state)
 {
 	m_currentState = state;
+	m_pText = TEMA::GetTexture("player");
 	switch (state)
 	{
 	case PlayerState::IDLE:
@@ -186,6 +228,7 @@ void Player::setState(PlayerState state)
 		m_acc.x = 0;
 		m_vel.y = 0;
 
+		
 		m_src = { 0 ,0,50,37};
 
 		m_params = new AnimationParameters(0, 3, 10, 0, 6, (int)m_src.y);
@@ -202,12 +245,23 @@ void Player::setState(PlayerState state)
 	case PlayerState::JUMP:
 		setJumpingState(JumpingState::PREPARING);
 		break;
+	case PlayerState::DUCK:
+		m_pText = TEMA::GetTexture("player2");
+		m_src = { 0,259,50,37 };
+
+		m_params = new AnimationParameters(3, 3, 10, 0, 6, (int)m_src.y);
+		break;
 	case PlayerState::SLIDE:
-		m_src = {0,2135,396,391};
+
+		m_src = { 0,111,50,37 };
+
+		m_params = new AnimationParameters(3, 0, 10, 1, 6, (int)m_src.y);
 		break;
 	case PlayerState::DIE:
-		m_src = {0,0,588,600};
-		break;
+		m_pText = TEMA::GetTexture("player2");
+		m_src = { 0,148,50,37 };
+
+		m_params = new AnimationParameters(4, 4, 10, 1, 6, (int)m_src.y);
 	default:
 		break;
 	}

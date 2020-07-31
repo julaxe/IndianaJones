@@ -92,26 +92,32 @@ public:
 	{
 		m_animationDone = false;
 		m_frame++;
+		m_src.x = m_src.w * m_sprite;
+		m_src.y = m_params->initialY + (m_currentRow * m_src.h);
+
 		if (m_frame == m_params->nf)
 		{
 			m_frame = 0;
+			m_sprite++;
 			
-			if (m_currentRow == m_params->nRows && m_sprite == m_params->smax)
-			{
-				m_sprite = m_params->sstart;
-				m_animationDone = true;
-				m_currentRow = 0;
-			}
-			else if (m_currentRow < m_params->nRows && m_sprite == m_params->nColumns)
+			if (m_currentRow < m_params->nRows && m_sprite > m_params->nColumns) //Go to the next row if not Done
 			{
 				m_currentRow++;
 				m_sprite = 0;
 			}
+			if (m_currentRow == m_params->nRows && m_sprite >= m_params->smax) //reset animation if done
+			{
+				m_animationDone = true;
+				if (m_sprite > m_params->smax)
+				{
+					m_sprite = m_params->sstart;
+					m_currentRow = 0;
+					m_animationDone = false;
+				}
+			}
+
 			
-			m_sprite++;
 		}
-		m_src.x = m_src.w * m_sprite;
-		m_src.y = m_params->initialY + (m_currentRow * m_src.h);
 	}
 	virtual void Update();
 	virtual void HandleEvents();
