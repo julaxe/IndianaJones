@@ -32,10 +32,10 @@ public: // Inherited and public.
 	double& GetAngle() { return m_angle; }
 	void SetAngle(double a) { m_angle = a; }
 	ObjectType GetType() { return m_type; }
-	void setBoundaries(SDL_Rect b);
-	bool checkBoundaries();
+	bool checkBoundaries(SDL_Rect b);
 	void setAlpha(SDL_Texture*s, int a);
-	SDL_Rect& getCollisionBox() { return m_collisionBox; }
+	SDL_FRect& getCollisionBox() { return m_collisionBox; }
+	void updateCollisionBox(float w, float h);
 	void Move(float velX, float velY);
 
 protected: // Private BUT inherited.
@@ -44,12 +44,13 @@ protected: // Private BUT inherited.
 	SDL_FRect m_dst;
 	SDL_FRect m_vel;
 	SDL_FRect m_acc;
+	SDL_FPoint m_centerPoint;
 	SDL_Renderer* m_pRend;
 	SDL_Texture* m_pText;
 	const char* m_path;
 	std::string m_key;
 	ObjectType m_type;
-	SDL_Rect m_collisionBox;
+	SDL_FRect m_collisionBox;
 	float m_gravity = 0.5f;
 	float m_friction = 1.0f;
 private: // Private NOT inherited.

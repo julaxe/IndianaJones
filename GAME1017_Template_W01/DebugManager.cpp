@@ -40,7 +40,7 @@ void DebugManager::Quit()
 	s_colors.shrink_to_fit();
 }
 
-void DebugManager::DrawRect(SDL_Rect rect, SDL_Rect colour)
+void DebugManager::DrawRect(SDL_FRect rect, SDL_Rect colour)
 {
 	int r = colour.x;
 	int g = colour.y;

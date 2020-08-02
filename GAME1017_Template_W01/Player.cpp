@@ -19,6 +19,9 @@ Player::Player(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationP
 	m_dst.h = 37 * m_scaleRendering;
 	m_vel = { 0,0 };
 	m_acc = { 0,0 };
+	m_centerPoint.x = m_dst.x + m_dst.w * 0.5;
+	m_centerPoint.y = m_dst.y + m_dst.h * 0.5;
+	m_collisionBox = { m_centerPoint.x-20,m_centerPoint.y-40,40,80 };
 	m_currentState = PlayerState::JUMP;
 	m_currentJumpingState = JumpingState::FLOATING;
 	m_jumpISpeed = 15;
@@ -26,6 +29,7 @@ Player::Player(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationP
 	m_slidingISpeed = 7;
 	m_maxVelX = 10;
 	m_maxVelY = 30;
+	
 }
 
 void Player::Render()
@@ -34,8 +38,6 @@ void Player::Render()
 }
 void Player::Update()
 {
-	Move(-LevelManager::velocity, 0.0f);
-	
 	m_vel.x += m_acc.x;
 	m_vel.y += m_acc.y;
 	
@@ -59,32 +61,26 @@ void Player::Update()
 	{
 		m_vel.y = std::fmin(m_vel.y, m_maxVelY);
 	}
-	
 
-	m_dst.x += m_vel.x; //move depends on the velocity
-	m_dst.y += m_vel.y;
-	m_collisionBox = { (int)m_dst.x, (int)m_dst.y,(int)(40 * m_scaleRendering),(int)(30 * m_scaleRendering) };
+	Move(m_vel.x - LevelManager::velocity, m_vel.y);//move depends on the velocity
+	if (checkBoundaries({ 0,0,WIDTH, HEIGHT }))
+	{
+		Move(-m_vel.x + LevelManager::velocity, 0.0f);
+	}
 	
 	Animate();
-	setBoundaries({ 0,0,WIDTH, HEIGHT });
+
 }
 
 void Player::HandleEvents()
 {	
 	switch (m_currentState) {
 		case PlayerState::IDLE:
-			
-						if (EVMA::KeyHeld(SDL_SCANCODE_A))
+						if (MoveIfInput())
 						{
-							m_RendererFlip = SDL_FLIP_HORIZONTAL;
 							setState(PlayerState::RUN);
 						}
-						else if (EVMA::KeyHeld(SDL_SCANCODE_D)) 
-						{
-							m_RendererFlip = SDL_FLIP_NONE;
-							setState(PlayerState::RUN);
-						}
-						else if (EVMA::KeyHeld(SDL_SCANCODE_SPACE))
+						else if (EVMA::KeyPressed(SDL_SCANCODE_SPACE))
 						{
 							setState(PlayerState::JUMP);
 				
@@ -100,116 +96,55 @@ void Player::HandleEvents()
 						}
 						break;
 		case PlayerState::RUN:
-			
-			
-						if (EVMA::KeyHeld(SDL_SCANCODE_A)) 
-						{
-							m_RendererFlip = SDL_FLIP_HORIZONTAL;
-							m_vel.x = -m_runningISpeed;
-							if (EVMA::KeyHeld(SDL_SCANCODE_SPACE))
-							{
-								setState(PlayerState::JUMP);
-							}
-						}
-						else if (EVMA::KeyHeld(SDL_SCANCODE_D))
-						{
-							m_RendererFlip = SDL_FLIP_NONE;
-							m_vel.x = m_runningISpeed;
-							if (EVMA::KeyHeld(SDL_SCANCODE_SPACE))
-							{
-								setState(PlayerState::JUMP);
-							}
-						}
-						else
+						if(!MoveIfInput())
 							setState(PlayerState::IDLE);
-
-						if (m_currentState == PlayerState::RUN) //if you are pressing A OR D
+						else //if you are stil running
 						{
-							if (EVMA::KeyHeld(SDL_SCANCODE_LCTRL))
+							if (EVMA::KeyPressed(SDL_SCANCODE_SPACE))
+							{
+								setState(PlayerState::JUMP);
+							}
+							if (EVMA::KeyPressed(SDL_SCANCODE_LCTRL))
 							{
 								setState(PlayerState::SLIDE);
 							}
 						}
-			
 						break;
 		case PlayerState::JUMP:
-
 						m_acc.y = m_gravity;
-						switch (m_currentJumpingState)
-						{
-						case JumpingState::PREPARING:
-							m_acc.x = 0;
-							m_acc.y = 0;
-							if (AnimationDone())
-							{
-								setJumpingState(JumpingState::RISING);
-							}
-							break;
-						case JumpingState::RISING:
-							if (m_vel.y > -2)
-							{
-								setJumpingState(JumpingState::FLOATING);
-							}
-							break;
-						case JumpingState::FLOATING:
-							if (m_vel.y > 2)
-							{
-								setJumpingState(JumpingState::FALLING);
-								
-							}
-							break;
-						case JumpingState::FALLING:
-							if (CollisionManager::collisionWithBottonTiles(this, LevelManager::m_level))
-							{
-								setState(PlayerState::IDLE);
-							}
-							break;
-						default:
-							break;
-						}
+						jumpingStateMachine();
 						if (m_currentJumpingState != JumpingState::PREPARING)
 						{
-
-							if (EVMA::KeyHeld(SDL_SCANCODE_A))
-							{
-								m_RendererFlip = SDL_FLIP_HORIZONTAL;
-								m_vel.x = -m_runningISpeed;
-							}
-							else if (EVMA::KeyHeld(SDL_SCANCODE_D))
-							{
-								m_RendererFlip = SDL_FLIP_NONE;
-								m_vel.x = m_runningISpeed;
-							}
+							MoveIfInput();
 						}
-			
 						break;
 		case PlayerState::DUCK:
-			if (!EVMA::KeyHeld(SDL_SCANCODE_LCTRL))
-			{
-				setState(PlayerState::IDLE);
-			}
-			break;
+						if (!EVMA::KeyHeld(SDL_SCANCODE_LCTRL))
+						{
+							setState(PlayerState::IDLE);
+						}
+						break;
 		case PlayerState::SLIDE:
-			if (m_RendererFlip == SDL_FLIP_NONE)
-				m_vel.x = m_slidingISpeed;
-			else
-				m_vel.x = -m_slidingISpeed;
+						if (m_RendererFlip == SDL_FLIP_NONE)
+							m_vel.x = m_slidingISpeed;
+						else
+							m_vel.x = -m_slidingISpeed;
 
-			if (AnimationDone())
-			{
-				setState(PlayerState::IDLE);
-			}
-			break;
+						if (AnimationDone())
+						{
+							setState(PlayerState::IDLE);
+						}
+						break;
 		case PlayerState::DIE:
-			if (AnimationDone())
-			{
-				m_frame = m_params->nf + 1;
-			}
-			if (EVMA::KeyHeld(SDL_SCANCODE_R))
-			{
-				setState(PlayerState::IDLE);
-			}
-			break;
+						if (AnimationDone())
+						{
+							m_frame = m_params->nf + 1;
+						}
+						if (EVMA::KeyHeld(SDL_SCANCODE_R))
+						{
+							setState(PlayerState::IDLE);
+						}
+						break;
 		default:
 			break;
 
@@ -227,10 +162,9 @@ void Player::setState(PlayerState state)
 		m_acc.y = 0;
 		m_acc.x = 0;
 		m_vel.y = 0;
-
+		updateCollisionBox(40.0f,90.0f);
 		
 		m_src = { 0 ,0,50,37};
-
 		m_params = new AnimationParameters(0, 3, 10, 0, 6, (int)m_src.y);
 		
 		break;
@@ -238,7 +172,6 @@ void Player::setState(PlayerState state)
 		m_vel.y = 0;
 
 		m_src = {0,37,50,37};
-		
 		m_params = new AnimationParameters(1, 6, 10, 0, 6, (int)m_src.y);
 
 		break;
@@ -246,21 +179,20 @@ void Player::setState(PlayerState state)
 		setJumpingState(JumpingState::PREPARING);
 		break;
 	case PlayerState::DUCK:
+
 		m_pText = TEMA::GetTexture("player2");
 		m_src = { 0,259,50,37 };
-
 		m_params = new AnimationParameters(3, 3, 10, 0, 6, (int)m_src.y);
 		break;
 	case PlayerState::SLIDE:
-
+		updateCollisionBox(90.0f, 30.0f);
 		m_src = { 0,111,50,37 };
-
 		m_params = new AnimationParameters(3, 0, 10, 1, 6, (int)m_src.y);
 		break;
 	case PlayerState::DIE:
+
 		m_pText = TEMA::GetTexture("player2");
 		m_src = { 0,148,50,37 };
-
 		m_params = new AnimationParameters(4, 4, 10, 1, 6, (int)m_src.y);
 	default:
 		break;
@@ -305,3 +237,56 @@ void Player::setJumpingState(JumpingState state)
 	m_sprite = m_params->sstart;
 }
 
+bool Player::MoveIfInput()
+{
+	bool move = false;
+	if (EVMA::KeyHeld(SDL_SCANCODE_A))
+	{
+		m_RendererFlip = SDL_FLIP_HORIZONTAL;
+		m_vel.x = -m_runningISpeed;
+		move = true;
+	}
+	else if (EVMA::KeyHeld(SDL_SCANCODE_D))
+	{
+		m_RendererFlip = SDL_FLIP_NONE;
+		m_vel.x = m_runningISpeed;
+		move = true;
+	}
+	return move;
+}
+
+void Player::jumpingStateMachine()
+{
+	switch (m_currentJumpingState)
+	{
+	case JumpingState::PREPARING:
+		m_acc.x = 0;
+		m_acc.y = 0;
+		if (AnimationDone())
+		{
+			setJumpingState(JumpingState::RISING);
+		}
+		break;
+	case JumpingState::RISING:
+		if (m_vel.y > -2)
+		{
+			setJumpingState(JumpingState::FLOATING);
+		}
+		break;
+	case JumpingState::FLOATING:
+		if (m_vel.y > 2)
+		{
+			setJumpingState(JumpingState::FALLING);
+
+		}
+		break;
+	case JumpingState::FALLING:
+		if (CollisionManager::collisionWithBottonTiles(this, LevelManager::m_level))
+		{
+			setState(PlayerState::IDLE);
+		}
+		break;
+	default:
+		break;
+	}
+}

@@ -53,16 +53,10 @@ bool CollisionManager::collisionWithBottonTiles(Sprite* obj, std::vector<std::ve
 	int tileSize = LevelManager::m_TileSize;
 	if (level[objX / tileSize][(objY + objH + objVel  + tileSize*0.5 + 1) / tileSize] != nullptr) // checking tile on the left side
 	{
-		obj->GetVelocity().y = 0;
-		obj->GetDstP()->y = level[objX / tileSize][(objY + objH + objVel + tileSize * 0.5 + 1) / tileSize]->GetDstP()->y - objH - 1; //just 1 pixel above the tiles
-		obj->getCollisionBox().y = obj->GetDstP()->y;
 		return true;
 	}
 	else if (level[(objX + objW) / tileSize][(objY + objH + objVel + tileSize * 0.5 + 1) / tileSize] != nullptr) // checking tile on the right side
 	{
-		obj->GetVelocity().y = 0;
-		obj->GetDstP()->y = level[(objX + objW) / tileSize][(objY + objH + objVel + tileSize * 0.5 + 1) / tileSize]->GetDstP()->y - objH - 1; //just 1 pixel above the tiles
-		obj->getCollisionBox().y = obj->GetDstP()->y;
 		return true;
 	}
 	return false;

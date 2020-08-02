@@ -29,30 +29,18 @@ void Sprite::HandleEvents()
 {
 }
 
-void Sprite::setBoundaries(SDL_Rect b)
+bool Sprite::checkBoundaries(SDL_Rect b)
 {
-	if (m_dst.x < b.x+10) {
-		m_dst.x = b.x+10 ;
-		m_acc.x = 0;
-	}
-	if (m_dst.x > b.x + b.w - m_dst.w) {
-		m_dst.x = b.x + b.w - m_dst.w;
-		m_acc.x = 0;
-	}
-	if (m_dst.y < b.y) {
-		m_dst.y = b.y;
-	}
-	if (m_dst.y > b.y + b.h - m_dst.h) {
-		m_dst.y = b.y + b.h - m_dst.h;
+	if (m_collisionBox.x < b.x+10 
+	|| m_collisionBox.x > b.x + b.w - m_collisionBox.w
+	|| m_collisionBox.y < b.y
+	|| m_collisionBox.y > b.y + b.h - m_collisionBox.h) 
+	{
+		
+		return true;
 	}
 	
-}
-
-bool Sprite::checkBoundaries()
-{
-	if (m_dst.x < -WIDTH * 2)return true;
-	else if (m_dst.x > WIDTH * 2) return true;
-	else return false;
+	return false;
 }
 
 void Sprite::setAlpha(SDL_Texture*s, int a)
@@ -60,12 +48,18 @@ void Sprite::setAlpha(SDL_Texture*s, int a)
 	SDL_SetTextureAlphaMod(s, a);
 }
 
+void Sprite::updateCollisionBox(float w, float h)
+{
+	m_collisionBox = { m_centerPoint.x - w * 0.5f, m_centerPoint.y - h * 0.5f,w,h };
+}
+
 void Sprite::Move(float velX, float velY)
 {
 	m_dst.x += velX;
 	m_dst.y += velY;
-	m_collisionBox.x = m_dst.x;
-	m_collisionBox.y = m_dst.y;
+	m_collisionBox.x += velX;
+	m_collisionBox.y += velY;
+	m_centerPoint = { m_dst.x + m_dst.w*0.5f, m_dst.y + m_dst.h * 0.5f};
 }
 
 void AnimatedSprite::Render() {}

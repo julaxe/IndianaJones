@@ -25,6 +25,9 @@ public:
 	void HandleEvents();
 	void setState(PlayerState);
 	void setJumpingState(JumpingState);
+	bool MoveIfInput();
+	void jumpingStateMachine();
+
 private:
 	PlayerState m_currentState;
 	JumpingState m_currentJumpingState;
