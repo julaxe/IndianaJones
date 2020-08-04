@@ -43,11 +43,8 @@ void PlayState::Render()
 	}
 	if (m_debugView)
 	{
-		for (auto p : Display::Instance()->getPlayers()->getList())
-		{
-			DEMA::DrawRect(p->getCollisionBox(), { 255,255,255,255 });
-
-		}
+		Display::Instance()->DrawDebugEnemies();
+		Display::Instance()->DrawDebugPlayer();
 		LevelManager::DrawCollisionBoxes();
 	}
 }

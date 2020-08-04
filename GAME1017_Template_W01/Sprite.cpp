@@ -52,9 +52,10 @@ void Sprite::setAlpha(SDL_Texture*s, int a)
 	SDL_SetTextureAlphaMod(s, a);
 }
 
-void Sprite::updateCollisionBox(float w, float h)
+void Sprite::updateCollisionBox(float w, float h, float offSetX, float offSetY)
 {
-	m_collisionBox = { m_centerPoint.x - w * 0.5f, m_centerPoint.y - h * 0.5f,w,h };
+	m_centerPoint = { m_dst.x + m_dst.w * 0.5f, m_dst.y + m_dst.h * 0.5f };
+	m_collisionBox = { m_centerPoint.x - w * 0.5f + offSetX, m_centerPoint.y - h * 0.5f + offSetY,w,h };
 }
 
 void Sprite::Move(float velX, float velY)

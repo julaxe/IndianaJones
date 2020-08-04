@@ -13,7 +13,8 @@ public:
 		m_spriteSheetName = spriteSheet;
 	}
 	bool animationDone();
-	void playAnimation(int velocity, SDL_FRect dst, float angle, int scale);
+	void playAnimation(int velocity);
+	void RenderAnimation(SDL_FRect dst, float angle, int scale);
 private:
 	std::vector<Frame*> listFrames;
 	std::string m_spriteSheetName;

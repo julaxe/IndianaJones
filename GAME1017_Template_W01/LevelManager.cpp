@@ -7,6 +7,7 @@
 int LevelManager::m_TileSize = 128;
 float LevelManager::velocity = 2.0f;
 std::vector<std::vector<Tile*>> LevelManager::m_level;
+
 void LevelManager::GenerateTiles()
 {
 	TEMA::RegisterTexture("Img/Tiles/Tiles.png", "Tiles");
@@ -107,7 +108,7 @@ void LevelManager::GenerateNewEnemies()
 	static int time = 0;
 	AnimationParameters params(0, 3, 10, 0, 6, 0); //we are not using this in skeleton
 	time++;
-	if (time%600 == 0)
+	if (time%300 == 0)
 	{
 		Display::Instance()->getEnemies()->getList().push_back(new  Skeleton({ 0,0,22,33 }, { WIDTH * 1.2,HEIGHT * 0.95,321,600 }, "Img/skeletonSheet.png", "skeleton", params));
 	}
