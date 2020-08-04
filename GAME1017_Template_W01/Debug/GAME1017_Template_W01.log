@@ -1,2 +1,20 @@
-﻿  TitleState.cpp
+﻿  PlayState.cpp
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\Background.h(7,16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\List.h(11,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\List.h(18,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\List.h(25,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(40,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(80,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(83,162): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(84,172): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(86,176): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(87,186): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(89,176): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(90,186): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(92,176): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(93,185): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(98,177): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(99,186): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(101,178): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\lucas\Documents\GitHub\IndianaJones\GAME1017_Template_W01\PlayState.cpp(102,187): warning C4305: 'argument': truncation from 'double' to 'float'
   GAME1017_Template_W01.vcxproj -> C:\Users\lucas\Documents\GitHub\IndianaJones\Debug\GAME1017_Template_W01.exe
