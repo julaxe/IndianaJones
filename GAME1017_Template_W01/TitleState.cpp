@@ -23,11 +23,11 @@ void TitleState::Render()
 
 void TitleState::Enter()
 {
-	m_pBackground = new Sprite({ 0,0,900,627 }, {WIDTH*0.5,HEIGHT*0.5,WIDTH,HEIGHT}, "Img/StarQuest.jpg", "circles");
-	m_pStartGameButton = new TitleButton({0,0,150,50 }, { WIDTH / 2,2 * HEIGHT / 3,200,50 }, "Img/startButton.png", "play");
-	FontManager::RegisterFont("Img/BerkshireSwash-Regular.ttf", "title", 80);
-	m_pTitle = new Label("title", 60, 60, "Space Odissey 2.0", {192,192,192,192});
-	m_pTitle->SetPos(95, 60);
+	m_pBackground = new Sprite({ 0,0,4200,2240 }, {WIDTH*0.5,HEIGHT*0.5,WIDTH,HEIGHT}, "Img/Background.png", "circles");
+	m_pStartGameButton = new TitleButton({0,0,600,200 }, { WIDTH / 2,2 * HEIGHT / 3, 600,200 }, "Img/Button.png", "play");
+	FontManager::RegisterFont("Img/8-BIT WONDER.TTF", "title", 80);
+	m_pTitle = new Label("title", 60, 60, "Indiana Jones", {75,0,130,255});
+	m_pTitle->SetPos(200, 120);
 }
 
 void TitleState::Exit()
