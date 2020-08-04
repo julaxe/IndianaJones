@@ -3,6 +3,7 @@
 #include "Engine.h"
 #include "Background.h"
 #include <time.h>
+#include<string.h>
 #include "CollisionManager.h"
 #include "AnimationExplosion.h"
 #include "Display.h"
@@ -35,6 +36,7 @@ void PlayState::Update()
 	{
 		StateManager::ChangeState(new LoseState());
 	}
+	
 }
 
 void PlayState::Render()

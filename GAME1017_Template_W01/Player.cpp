@@ -63,7 +63,7 @@ void Player::Update()
 	}
 	
 	Animate();
-
+	m_score++;
 }
 
 void Player::HandleEvents()
