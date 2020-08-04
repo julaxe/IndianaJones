@@ -30,7 +30,10 @@ void PlayState::Update()
 	if (!m_pause) {
 		Display::Instance()->Update();
 		LevelManager::UpdateLevel();
-
+	}
+	if (Display::Instance()->checkCollisionPlayersAndEnemies())
+	{
+		StateManager::ChangeState(new LoseState());
 	}
 }
 
@@ -122,7 +125,8 @@ void PlayState::Enter()
 
 void PlayState::Exit()
 {
-	//Display::Instance()->getList().clear();
+	Display::Instance()->Clear();
+	LevelManager::Clear();
 }
 
 void PlayState::Resume()

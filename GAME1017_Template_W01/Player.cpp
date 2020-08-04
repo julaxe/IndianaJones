@@ -16,14 +16,14 @@ Player::Player(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationP
 	m_scaleRendering = 4.0f;
 	m_dst.w = 50 * m_scaleRendering;
 	m_dst.h = 37 * m_scaleRendering;
-	updateCollisionBox(40.0f, 90.0f, 50.0f);
-	setState(PlayerState::IDLE);
 	m_jumpISpeed = 15.0f;
 	m_runningISpeed = 10.0f;
 	m_slidingISpeed = 7.0f;
 	m_maxVelX = 10.0f;
 	m_maxVelY = 30.0f;
 	
+	updateCollisionBox(40.0f, 90.0f, 50.0f);
+	setState(PlayerState::IDLE);
 }
 
 void Player::Render()

@@ -114,6 +114,10 @@ void LevelManager::GenerateNewEnemies()
 	}
 }
 
+void LevelManager::Clear()
+{
+	m_level.clear();
+}
 bool LevelManager::deleteColumnsReadyOutOfScreen()
 {
 	for (int tile = 0; tile < m_level[0].size(); tile++)
