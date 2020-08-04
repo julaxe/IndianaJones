@@ -126,6 +126,7 @@
     <ClCompile Include="DebugManager.cpp" />
     <ClCompile Include="Display.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Display.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Frame.h" />
+    <ClInclude Include="Goblin.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="List.h" />

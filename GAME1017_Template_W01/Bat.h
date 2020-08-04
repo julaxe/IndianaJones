@@ -1,4 +1,4 @@
-#pragma once
+
 #pragma once
 #include "Enemy.h"
 #include "Animation.h"
@@ -19,6 +19,5 @@ private:
 	int m_timerAtck;
 	Animation* m_Arun;
 	Animation* m_Aattack;
-	Animation* m_AliftingAttack;
 
 };

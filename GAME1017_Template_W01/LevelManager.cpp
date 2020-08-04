@@ -5,6 +5,7 @@
 #include "Display.h"
 #include "Skeleton.h"
 #include "Bat.h"
+#include "Goblin.h"
 int LevelManager::m_TileSize = 128;
 float LevelManager::velocity = 2.0f;
 int LevelManager::spawningTimer = 300;
@@ -118,13 +119,18 @@ void LevelManager::GenerateNewEnemies()
 	}
 	if (timer%spawningTimer == 0)
 	{
-		if (rand() % 2 == 0)
+		int randomNumber = rand() % 100;
+		if (randomNumber <  45)
 		{
 			Display::Instance()->getEnemies()->getList().push_back(new  Skeleton({ 0,0,22,33 }, { WIDTH * 1.2,HEIGHT * 0.95,321,600 }, "Img/skeletonSheet.png", "skeleton", params));
 		}
-		else
+		else if (randomNumber >= 45 && randomNumber < 90)
 		{
 			Display::Instance()->getEnemies()->getList().push_back(new  Bat({ 0,0,150,150 }, { WIDTH * 1.2,HEIGHT * 0.45,321,600 }, "Img/Bat.png", "Bat", params));
+		}
+		else
+		{
+			Display::Instance()->getEnemies()->getList().push_back(new  Goblin({ 0,0,150,150 }, { WIDTH * 1.2,HEIGHT * 0.81,321,600 }, "Img/goblin.png", "Goblin", params));
 		}
 	}
 }

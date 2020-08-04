@@ -138,6 +138,9 @@
     <ClCompile Include="Bat.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Goblin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TitleButton.h">
@@ -249,6 +252,9 @@
       <Filter>Sprites</Filter>
     </ClInclude>
     <ClInclude Include="Bat.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Goblin.h">
       <Filter>Sprites</Filter>
     </ClInclude>
   </ItemGroup>
