@@ -135,6 +135,9 @@
     <ClCompile Include="Display.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TitleButton.h">
@@ -243,6 +246,9 @@
       <Filter>Sprites</Filter>
     </ClInclude>
     <ClInclude Include="SpriteSheet.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
       <Filter>Sprites</Filter>
     </ClInclude>
   </ItemGroup>

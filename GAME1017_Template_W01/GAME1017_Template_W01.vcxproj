@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DebugManager.cpp" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Bat.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Config.h" />

@@ -173,7 +173,7 @@ void Player::setState(PlayerState state)
 		setJumpingState(JumpingState::PREPARING);
 		break;
 	case PlayerState::DUCK:
-
+		updateCollisionBox(90.0f, 30.0f);
 		m_pText = TEMA::GetTexture("player2");
 		m_src = { 0,259,50,37 };
 		m_params = new AnimationParameters(3, 3, 10, 0, 6, (int)m_src.y);

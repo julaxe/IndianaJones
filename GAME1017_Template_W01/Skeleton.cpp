@@ -8,6 +8,7 @@
 Skeleton::Skeleton(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationParameters animationP) : Enemy(s,d,p,k,animationP)
 {
 	m_scaleRendering = 6.0f;
+	m_timerAtck = 0;
 	updateCollisionBox(150.0f, 250.0f, -112.0f, -170.0f);
 	m_vel.x = 0;
 	TEMA::RegisterSpriteSheet("Img/skeletonSheet.txt", "Img/skeletonSheet.png", "skeletonSheet");
@@ -17,7 +18,6 @@ Skeleton::Skeleton(SDL_Rect s, SDL_FRect d, const char* p, std::string k, Animat
 
 	m_Arun = new Animation();
 	m_Aattack = new Animation();
-	m_AliftingAttack = new Animation();
 	
 
 	buildAnimation();
@@ -43,12 +43,21 @@ void Skeleton::HandleEvents()
 	switch (m_currentState)
 	{
 	case EnemyState::RUN:
-		m_vel.x = -1;
 		if(distance < 500)
 			setState(EnemyState::ATTACK);
 		break;
 	case EnemyState::ATTACK:
 		m_vel.x = 0;
+		if (m_timerAtck > 80)
+		{
+			updateCollisionBox(150.0f, 120.0f, -22.0f, -145.0f);
+		}
+		if (m_currentAnimation->animationDone())
+		{
+			m_timerAtck = 0;
+			updateCollisionBox(150.0f, 250.0f, -22.0f, -145.0f);
+		}
+		m_timerAtck++;
 		break;
 	default:
 		break;

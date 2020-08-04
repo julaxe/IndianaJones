@@ -15,8 +15,9 @@ private:
 	SpriteSheet* m_spritesheet;
 	Animation* m_currentAnimation;
 
+	int m_timerAtck;
 	Animation* m_Arun;
 	Animation* m_Aattack;
-	Animation* m_AliftingAttack;
+
 	
 };

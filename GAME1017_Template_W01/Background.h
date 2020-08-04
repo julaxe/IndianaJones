@@ -8,5 +8,5 @@ public:
 	}
 	void Update();
 private:
-	int m_velocity = 0;
+	float m_velocity = 0;
 };

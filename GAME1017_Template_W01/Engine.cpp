@@ -8,7 +8,7 @@
 #include "TextureManager.h"
 #include <iostream>
 #include "TitleState.h"
-
+#include <time.h>
 using namespace std;
 
 Engine::Engine():m_running(false){ cout << "Engine class constructed!" << endl; }
@@ -42,7 +42,7 @@ bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, 
 	STMA::PushState(new TitleState());
 	//code for exceptions.
 	
-
+	srand((unsigned)time(NULL));
 	// Final engine initialization calls.
 	m_fps = (Uint32)round((1 / (double)FPS) * 1000); // Sets FPS in milliseconds and rounds.
 	m_running = true; // Everything is okay, start the engine.
