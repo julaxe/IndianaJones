@@ -36,7 +36,9 @@ void PlayState::Update()
 	{
 		StateManager::ChangeState(new LoseState());
 	}
-	
+	for (auto a : Display::Instance()->getListLabels()) {
+		a->Update();
+	}
 }
 
 void PlayState::Render()
@@ -51,6 +53,8 @@ void PlayState::Render()
 		Display::Instance()->DrawDebugEnemies();
 		Display::Instance()->DrawDebugPlayer();
 		LevelManager::DrawCollisionBoxes();
+	}	for (auto a : Display::Instance()->getListLabels()) {
+		a->Render();
 	}
 }
 
@@ -71,6 +75,7 @@ void PlayState::HandleEvents()
 	if (EVMA::KeyReleased(SDL_SCANCODE_H)) {
 		m_debugView = !m_debugView;
 	}
+
 }
 
 
@@ -118,10 +123,12 @@ void PlayState::Enter()
 	Display::Instance()->getListLabels().push_back(new ScoreLabel("alpha", 10, 10, "SCORE: "));
 	
 	//SOUND
-	SOMA::Load("Aud/moonSonata.wav", "background", SOUND_MUSIC);
+	SOMA::Load("Aud/Desert.mp3", "background", SOUND_MUSIC);
 	SOMA::PlayMusic("background");
-	SOMA::Load("Aud/laser.wav", "laserGreen", SOUND_SFX);
-	SOMA::SetAllVolume(5);
+	SOMA::Load("Aud/jump.wav", "Jump", SOUND_SFX);
+	SOMA::Load("Aud/Death.mp3", "Death", SOUND_SFX);
+	SOMA::Load("Aud/wee.mp3", "Wee", SOUND_SFX);
+	SOMA::SetAllVolume(20);
 
 }
 

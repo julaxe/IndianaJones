@@ -6,6 +6,7 @@
 #include "Skeleton.h"
 #include "Bat.h"
 #include "Goblin.h"
+#include "SoundManager.h"
 int LevelManager::m_TileSize = 128;
 float LevelManager::velocity = 2.0f;
 int LevelManager::spawningTimer = 300;
@@ -131,6 +132,7 @@ void LevelManager::GenerateNewEnemies()
 		else
 		{
 			Display::Instance()->getEnemies()->getList().push_back(new  Goblin({ 0,0,150,150 }, { WIDTH * 1.2,HEIGHT * 0.81,321,600 }, "Img/goblin.png", "Goblin", params));
+			SoundManager::PlaySound("Wee",0,-1);
 		}
 	}
 }

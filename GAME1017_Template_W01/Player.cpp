@@ -84,7 +84,8 @@ void Player::HandleEvents()
 						else if (EVMA::KeyPressed(SDL_SCANCODE_SPACE))
 						{
 							setState(PlayerState::JUMP);
-				
+							SoundManager::SetSoundVolume(40);
+							SoundManager::PlaySound("Jump",0,-1);
 						}
 						else if (EVMA::KeyHeld(SDL_SCANCODE_LCTRL))
 						{
@@ -104,6 +105,8 @@ void Player::HandleEvents()
 							if (EVMA::KeyPressed(SDL_SCANCODE_SPACE))
 							{
 								setState(PlayerState::JUMP);
+								SoundManager::SetSoundVolume(40);
+								SoundManager::PlaySound("Jump", 0, -1);
 							}
 							if (EVMA::KeyPressed(SDL_SCANCODE_LCTRL))
 							{
@@ -190,6 +193,7 @@ void Player::setState(PlayerState state)
 
 		m_pText = TEMA::GetTexture("player2");
 		m_src = { 0,148,50,37 };
+		SoundManager::PlaySound("Death", 0, -1);
 		m_params = new AnimationParameters(4, 4, 10, 1, 6, (int)m_src.y);
 	default:
 		break;

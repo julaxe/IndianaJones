@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "TextureManager.h"
 #include "Display.h"
+#include "SoundManager.h"
 
 Goblin::Goblin(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationParameters animationP) : Enemy(s, d, p, k, animationP)
 {
