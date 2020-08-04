@@ -25,7 +25,6 @@ void Animation::RenderAnimation(SDL_FRect dst, float angle, int scale)
 }
 void Animation::playAnimation(int velocity)
 {
-	
 	m_animationDone = false;
 	
 	if (m_timerAnimation >= velocity)

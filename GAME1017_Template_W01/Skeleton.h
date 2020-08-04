@@ -13,7 +13,10 @@ public:
 private:
 	void buildAnimation();
 	SpriteSheet* m_spritesheet;
+	Animation* m_currentAnimation;
+
 	Animation* m_Arun;
 	Animation* m_Aattack;
-	Animation* m_currentAnimation;
+	Animation* m_AliftingAttack;
+	
 };

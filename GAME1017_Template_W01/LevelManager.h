@@ -9,6 +9,7 @@ public:
 	static void UpdateLevel();
 	static void GenerateNewCol();
 	static void GenerateNewEnemies();
+	static void Clear();
 	
 	static int m_TileSize;
 	static std::vector<std::vector<Tile*>> m_level;

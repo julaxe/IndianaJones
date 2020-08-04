@@ -13,10 +13,12 @@ Skeleton::Skeleton(SDL_Rect s, SDL_FRect d, const char* p, std::string k, Animat
 	TEMA::RegisterSpriteSheet("Img/skeletonSheet.txt", "Img/skeletonSheet.png", "skeletonSheet");
 	m_spritesheet = TEMA::GetSpriteSheet("skeletonSheet");
 
+	m_currentAnimation = new Animation();
 
 	m_Arun = new Animation();
 	m_Aattack = new Animation();
-	m_currentAnimation = new Animation();
+	m_AliftingAttack = new Animation();
+	
 
 	buildAnimation();
 
@@ -62,7 +64,7 @@ void Skeleton::setState(EnemyState state)
 		m_currentAnimation = m_Arun;
 		break;
 	case EnemyState::ATTACK:
-		m_dst.x -= 90;
+		m_dst.x -= 90; //offset of the sprite
 		m_dst.y -= 25;
 		m_currentAnimation = m_Aattack;
 		break;
