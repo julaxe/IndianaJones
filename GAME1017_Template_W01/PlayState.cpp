@@ -32,7 +32,7 @@ void PlayState::Update()
 		Display::Instance()->Update();
 		LevelManager::UpdateLevel();
 	}
-	if (Display::Instance()->checkCollisionPlayersAndEnemies())
+	if (Display::Instance()->PlayerDeath())
 	{
 		StateManager::ChangeState(new LoseState());
 	}

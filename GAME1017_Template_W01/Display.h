@@ -51,6 +51,7 @@ public:
 	void DrawDebugEnemies();
 
 	bool checkCollisionPlayersAndEnemies();
+	bool PlayerDeath();
 	
 
 

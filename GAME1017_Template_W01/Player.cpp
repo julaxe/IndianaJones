@@ -21,7 +21,7 @@ Player::Player(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationP
 	m_slidingISpeed = 7.0f;
 	m_maxVelX = 10.0f;
 	m_maxVelY = 30.0f;
-	
+	m_running = true;
 	updateCollisionBox(40.0f, 90.0f, 50.0f);
 	setState(PlayerState::IDLE);
 }
@@ -64,6 +64,13 @@ void Player::Update()
 	
 	Animate();
 	m_score++;
+	if (m_currentState != PlayerState::DIE)
+	{
+		if (Display::Instance()->checkCollisionPlayersAndEnemies())
+		{
+			setState(PlayerState::DIE);
+		}
+	}
 }
 
 void Player::HandleEvents()
@@ -132,11 +139,7 @@ void Player::HandleEvents()
 		case PlayerState::DIE:
 						if (AnimationDone())
 						{
-							m_frame = m_params->nf + 1;
-						}
-						if (EVMA::KeyHeld(SDL_SCANCODE_R))
-						{
-							setState(PlayerState::IDLE);
+							m_running = false;
 						}
 						break;
 		default:

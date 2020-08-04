@@ -42,3 +42,13 @@ bool Display::checkCollisionPlayersAndEnemies()
 	
 	return false;
 }
+
+bool Display::PlayerDeath()
+{
+	for (auto p : getPlayers()->getList())
+	{
+		if (!p->getRunning())
+			return true;
+	}
+	return false;
+}

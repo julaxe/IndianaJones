@@ -37,6 +37,7 @@ public: // Inherited and public.
 	SDL_FRect& getCollisionBox() { return m_collisionBox; }
 	void updateCollisionBox(float w, float h ,float offSetX = 0.0f, float offSetY = 0.0f);
 	void Move(float velX, float velY);
+	bool getRunning() { return m_running; }
 
 protected: // Private BUT inherited.
 	double m_angle;
@@ -53,6 +54,7 @@ protected: // Private BUT inherited.
 	SDL_FRect m_collisionBox;
 	float m_gravity = 0.5f;
 	float m_friction = 1.0f;
+	bool m_running;
 private: // Private NOT inherited.
 };
 
