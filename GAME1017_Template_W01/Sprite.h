@@ -93,7 +93,7 @@ public:
 	{
 		m_animationDone = false;
 		m_frame++;
-		m_src.x = m_src.w * m_sprite;
+		m_src.x = m_initialX + (m_src.w * m_sprite);
 		m_src.y = m_params->initialY + (m_currentRow * m_src.h);
 
 		if (m_frame == m_params->nf)
@@ -127,7 +127,8 @@ public:
 protected:
 	int m_sprite,		// The current sprite index in row.
 		m_frame = 0,	// Frame counter.
-		m_currentRow = 0;
+		m_currentRow = 0,
+		m_initialX;
 	AnimationParameters* m_params;
 		
 	bool m_animationDone = false;

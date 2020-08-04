@@ -120,6 +120,18 @@
     <ClCompile Include="LevelManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Sprites</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TitleButton.h">
@@ -215,6 +227,21 @@
     <ClInclude Include="Tile.h">
       <Filter>Sprites</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Sprites</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Img\Enemies.png">
@@ -229,16 +256,7 @@
     <Image Include="Img\bg.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="Img\bg2.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="Img\exit.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\explosion.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Img\explosion3.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Img\resume.png">
@@ -248,6 +266,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Img\IndianaJones.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Img\skeletonSheet.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

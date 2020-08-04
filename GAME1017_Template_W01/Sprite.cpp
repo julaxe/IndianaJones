@@ -8,6 +8,10 @@ Sprite::Sprite(SDL_Rect s, SDL_FRect d, const char* path, std::string key) {
 	m_path = path; 
 	m_key = key;
 	m_angle = 0.0;
+	m_vel = { 0,0 };
+	m_acc = { 0,0 };
+	m_centerPoint.x = d.x;
+	m_centerPoint.y = d.y;
 	m_dst.x = d.x - m_dst.w / 2;
 	m_dst.y = d.y - m_dst.h / 2;
 	m_pRend = Engine::Instance().GetRenderer();

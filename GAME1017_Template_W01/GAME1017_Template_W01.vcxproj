@@ -118,10 +118,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DebugManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -136,8 +138,10 @@
     <ClCompile Include="RestartButton.cpp" />
     <ClCompile Include="ResumeButton.cpp" />
     <ClCompile Include="ScoreLabel.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -149,12 +153,16 @@
     <ClCompile Include="TitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="DebugManager.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Rock.h" />
@@ -167,6 +175,7 @@
     <ClInclude Include="RestartButton.h" />
     <ClInclude Include="ResumeButton.h" />
     <ClInclude Include="ScoreLabel.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TitleButton.h" />
     <ClInclude Include="LoseState.h" />
@@ -184,15 +193,13 @@
   <ItemGroup>
     <Image Include="Img\background.jpg" />
     <Image Include="Img\bg.png" />
-    <Image Include="Img\bg2.png" />
     <Image Include="Img\buttons_map.png" />
     <Image Include="Img\Enemies.png" />
     <Image Include="Img\exit.png" />
-    <Image Include="Img\explosion.png" />
-    <Image Include="Img\explosion3.png" />
     <Image Include="Img\IndianaJones.png" />
     <Image Include="Img\play.png" />
     <Image Include="Img\resume.png" />
+    <Image Include="Img\skeletonSheet.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Img\alpha_echo.ttf" />

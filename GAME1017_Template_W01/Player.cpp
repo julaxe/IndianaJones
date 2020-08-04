@@ -12,23 +12,17 @@ int Player::m_score = 0;
 
 Player::Player(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationParameters animationP) : AnimatedSprite(s, d, p, k, animationP)
 {
-	m_angle = 0;
 	m_type = PLAYER;
 	m_scaleRendering = 4.0f;
 	m_dst.w = 50 * m_scaleRendering;
 	m_dst.h = 37 * m_scaleRendering;
-	m_vel = { 0,0 };
-	m_acc = { 0,0 };
-	m_centerPoint.x = m_dst.x + m_dst.w * 0.5;
-	m_centerPoint.y = m_dst.y + m_dst.h * 0.5;
-	m_collisionBox = { m_centerPoint.x-20,m_centerPoint.y-40,40,80 };
-	m_currentState = PlayerState::JUMP;
-	m_currentJumpingState = JumpingState::FLOATING;
-	m_jumpISpeed = 15;
-	m_runningISpeed = 10;
-	m_slidingISpeed = 7;
-	m_maxVelX = 10;
-	m_maxVelY = 30;
+	updateCollisionBox(40.0f, 90.0f);
+	setState(PlayerState::IDLE);
+	m_jumpISpeed = 15.0f;
+	m_runningISpeed = 10.0f;
+	m_slidingISpeed = 7.0f;
+	m_maxVelX = 10.0f;
+	m_maxVelY = 30.0f;
 	
 }
 
@@ -215,6 +209,8 @@ void Player::setJumpingState(JumpingState state)
 		break;
 	case JumpingState::RISING:
 		m_vel.y = -m_jumpISpeed;
+		if (EventManager::KeyHeld(SDL_SCANCODE_SPACE))
+			m_vel.y = -m_jumpISpeed * 1.3f;
 		m_src = { 0,74,50,37 };
 
 		m_params = new AnimationParameters(2, 3, 10, 0, 6, (int)m_src.y);

@@ -33,7 +33,7 @@ private:
 	JumpingState m_currentJumpingState;
 	SDL_RendererFlip m_RendererFlip = SDL_FLIP_NONE;
 	float m_scaleRendering;
-	int m_jumpISpeed, m_maxVelX, m_maxVelY, m_runningISpeed, m_slidingISpeed;
+	float m_jumpISpeed, m_maxVelX, m_maxVelY, m_runningISpeed, m_slidingISpeed;
 
 	
 };

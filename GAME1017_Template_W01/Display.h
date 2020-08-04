@@ -19,6 +19,7 @@ public:
 		Players->Update();
 		Tiles->Update();
 		Obstacles->Update();
+		Enemies->Update();
 	}
 	void Render()
 	{
@@ -27,6 +28,7 @@ public:
 		Players->Render();
 		Tiles->Render();
 		Obstacles->Render();
+		Enemies->Render();
 	}
 	void HandleEvents()
 	{
@@ -34,12 +36,14 @@ public:
 		Players->HandleEvents();
 		Tiles->HandleEvents();
 		Obstacles->HandleEvents();
+		Enemies->HandleEvents();
 	}
 
 	List* getBackground() { return Backgrounds; }
 	List* getPlayers() { return Players; }
 	List* getTiles() { return Tiles; }
 	List* getObstacles() { return Obstacles; }
+	List* getEnemies() { return Enemies; }
 	std::vector<Label*> &getListLabels() { return listLabels; }
 
 private:
@@ -47,6 +51,7 @@ private:
 	List* Players;
 	List* Tiles;
 	List* Obstacles;
+	List* Enemies;
 	
 	std::vector<Label*> listLabels;
 	static Display* m_Instance;
@@ -57,6 +62,7 @@ private:
 		Players = new List();
 		Tiles = new List();
 		Obstacles = new List();
+		Enemies = new List();
 	}
 	~Display() {}
 

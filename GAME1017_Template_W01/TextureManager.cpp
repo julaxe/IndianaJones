@@ -22,6 +22,20 @@ void TextureManager::RegisterTexture(const char* path, const std::string key)
 
 SDL_Texture* TextureManager::GetTexture(const std::string key) { return s_textures[key]; }
 
+void TextureManager::RegisterSpriteSheet(std::string text,const char* path, const std::string key)
+{
+	SpriteSheet* temp = new SpriteSheet(text, path, key);
+	if (temp == nullptr)
+		std::cout << "Could not load SpriteSheet: Error - " << IMG_GetError() << std::endl;
+	else
+		s_spriteSheets.emplace(key, temp);
+}
+
+SpriteSheet* TextureManager::GetSpriteSheet(const std::string key)
+{
+	return s_spriteSheets[key];
+}
+
 void TextureManager::Quit()
 {
 	for (auto const& i : s_textures)
@@ -31,4 +45,5 @@ void TextureManager::Quit()
 	s_textures.clear();
 }
 
+std::map<std::string, SpriteSheet*> TextureManager::s_spriteSheets;
 std::map<std::string, SDL_Texture*> TextureManager::s_textures;
