@@ -2,6 +2,8 @@
 #include "Engine.h"
 #include "DebugManager.h"
 #include "TextureManager.h"
+#include "Display.h"
+#include "Skeleton.h"
 int LevelManager::m_TileSize = 128;
 float LevelManager::velocity = 2.0f;
 std::vector<std::vector<Tile*>> LevelManager::m_level;
@@ -70,6 +72,10 @@ void LevelManager::UpdateLevel()
 		GenerateNewCol();
 	}
 
+	GenerateNewEnemies();
+	deleteEnemiesReadyOutOfScreen();
+
+
 
 }
 
@@ -96,6 +102,17 @@ void LevelManager::GenerateNewCol()
 	m_level.push_back(col);
 }
 
+void LevelManager::GenerateNewEnemies()
+{
+	static int time = 0;
+	AnimationParameters params(0, 3, 10, 0, 6, 0); //we are not using this in skeleton
+	time++;
+	if (time%600 == 0)
+	{
+		Display::Instance()->getEnemies()->getList().push_back(new  Skeleton({ 0,0,22,33 }, { WIDTH * 1.2,HEIGHT * 0.95,321,600 }, "Img/skeletonSheet.png", "skeleton", params));
+	}
+}
+
 bool LevelManager::deleteColumnsReadyOutOfScreen()
 {
 	for (int tile = 0; tile < m_level[0].size(); tile++)
@@ -114,6 +131,23 @@ bool LevelManager::deleteColumnsReadyOutOfScreen()
 	}
 	return false;
 	
+}
+
+bool LevelManager::deleteEnemiesReadyOutOfScreen()
+{
+	bool enemieDeleted = false;
+	for (int i = 0; i < Display::Instance()->getEnemies()->getList().size(); i++)
+	{
+		if (Display::Instance()->getEnemies()->getList()[i]->GetDstP()->x <= -2 * m_TileSize)
+		{
+			delete Display::Instance()->getEnemies()->getList()[i];
+			Display::Instance()->getEnemies()->getList()[i] = nullptr;
+			enemieDeleted = true;
+		}
+	}
+	Display::Instance()->getEnemies()->getList().erase(std::remove(Display::Instance()->getEnemies()->getList().begin(), 
+				Display::Instance()->getEnemies()->getList().end(), nullptr), Display::Instance()->getEnemies()->getList().end());
+	return enemieDeleted;
 }
 
 

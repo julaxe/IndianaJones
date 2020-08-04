@@ -8,6 +8,7 @@ public:
 	static void DrawCollisionBoxes();
 	static void UpdateLevel();
 	static void GenerateNewCol();
+	static void GenerateNewEnemies();
 	
 	static int m_TileSize;
 	static std::vector<std::vector<Tile*>> m_level;
@@ -15,4 +16,5 @@ public:
 
 private:
 	static bool deleteColumnsReadyOutOfScreen();
+	static bool deleteEnemiesReadyOutOfScreen();
 };
