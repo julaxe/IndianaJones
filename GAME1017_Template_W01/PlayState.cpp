@@ -81,26 +81,26 @@ void PlayState::Enter()
 	srand(time(NULL));
 
 	//BACKGROUNDS
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536}, { 0,0,WIDTH * 1.1,HEIGHT}, "Img/background01.png", "background", 0.2));
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH*1.1,0,WIDTH * 1.1,HEIGHT}, "Img/background01.png", "background2", 0.2));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536}, { 0,0,WIDTH * 1.26,HEIGHT*2}, "Img/background01.png", "background", 0.2));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH* 1.26,0,WIDTH * 1.26,HEIGHT * 2 }, "Img/background01.png", "background2", 0.2));
 
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_005.png", "background3", 0.4));
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.1,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_005.png", "background4", 0.4));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,HEIGHT*.5,WIDTH * 1.26,HEIGHT }, "Img/fantasy-2048-x-1536_005.png", "background3", 0.4));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.26,HEIGHT*.5,WIDTH * 1.26,HEIGHT }, "Img/fantasy-2048-x-1536_005.png", "background4", 0.4));
 
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_004.png", "background5", 0.6));
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.1,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_004.png", "background6", 0.6));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,HEIGHT * .5,WIDTH * 1.26,HEIGHT  }, "Img/fantasy-2048-x-1536_004.png", "background5", 0.6));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.26,HEIGHT * .5,WIDTH * 1.26,HEIGHT  }, "Img/fantasy-2048-x-1536_004.png", "background6", 0.6));
 
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_003.png", "background7", 0.8));
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.1,0,WIDTH * 1.1,HEIGHT}, "Img/fantasy-2048-x-1536_003.png", "background8", 0.8));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,HEIGHT * .5,WIDTH * 1.26,HEIGHT }, "Img/fantasy-2048-x-1536_003.png", "background7", 0.8));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.26,HEIGHT * .5,WIDTH * 1.26,HEIGHT }, "Img/fantasy-2048-x-1536_003.png", "background8", 0.8));
 
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_002.png", "background9", 1));
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.1,0,WIDTH * 1.1,HEIGHT}, "Img/fantasy-2048-x-1536_002.png", "background10", 1));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,HEIGHT * .5,WIDTH * 1.26,HEIGHT  }, "Img/fantasy-2048-x-1536_002.png", "background9", 1));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.26,HEIGHT * .5,WIDTH * 1.26,HEIGHT }, "Img/fantasy-2048-x-1536_002.png", "background10", 1));
 
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_001.png", "background11", 1.2));
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.1,0,WIDTH * 1.1,HEIGHT}, "Img/fantasy-2048-x-1536_001.png", "background12", 1.2));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,HEIGHT * .5,WIDTH * 1.26,HEIGHT  }, "Img/fantasy-2048-x-1536_001.png", "background11", 1.2));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.26,HEIGHT * .5,WIDTH * 1.26,HEIGHT  }, "Img/fantasy-2048-x-1536_001.png", "background12", 1.2));
 
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,0,WIDTH * 1.1,HEIGHT  }, "Img/fantasy-2048-x-1536_000.png", "background13", 1.4));
-	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.1,0,WIDTH * 1.1,HEIGHT }, "Img/fantasy-2048-x-1536_000.png", "background14", 1.4));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { 0,HEIGHT * .5,WIDTH * 1.26,HEIGHT }, "Img/fantasy-2048-x-1536_000.png", "background13", 1.4));
+	Display::Instance()->getBackground()->getList().push_back(new Background({ 0,0,2048,1536 }, { WIDTH * 1.26,HEIGHT * .5,WIDTH * 1.26,HEIGHT }, "Img/fantasy-2048-x-1536_000.png", "background14", 1.4));
 
 
 	LevelManager::GenerateTiles();
