@@ -2,6 +2,7 @@
 #include "Label.h"
 #include "List.h"
 #include "LevelManager.h"
+#include "DebugManager.h"
 
 class Display {
 public:
@@ -45,6 +46,23 @@ public:
 	List* getObstacles() { return Obstacles; }
 	List* getEnemies() { return Enemies; }
 	std::vector<Label*> &getListLabels() { return listLabels; }
+
+	void DrawDebugPlayer()
+	{
+		for (auto p : getPlayers()->getList())
+		{
+			DEMA::DrawRect(p->getCollisionBox(), { 255,255,255,255 });
+
+		}
+	}
+	void DrawDebugEnemies()
+	{
+		for (auto p : getEnemies()->getList())
+		{
+			DEMA::DrawRect(p->getCollisionBox(), { 255,255,255,255 });
+
+		}
+	}
 
 private:
 	List* Backgrounds;

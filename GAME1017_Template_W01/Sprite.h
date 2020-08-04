@@ -35,7 +35,7 @@ public: // Inherited and public.
 	bool checkBoundaries(SDL_Rect b);
 	void setAlpha(SDL_Texture*s, int a);
 	SDL_FRect& getCollisionBox() { return m_collisionBox; }
-	void updateCollisionBox(float w, float h);
+	void updateCollisionBox(float w, float h ,float offSetX = 0.0f, float offSetY = 0.0f);
 	void Move(float velX, float velY);
 
 protected: // Private BUT inherited.

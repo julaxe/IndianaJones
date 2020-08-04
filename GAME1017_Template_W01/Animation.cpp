@@ -11,10 +11,8 @@ bool Animation::animationDone()
 {
 	return m_animationDone;
 }
-void Animation::playAnimation(int velocity, SDL_FRect dst, float angle, int scale)
+void Animation::RenderAnimation(SDL_FRect dst, float angle, int scale)
 {
-	
-	m_animationDone = false;
 	if (listFrames.size() > 0)
 	{
 		auto Texture = TextureManager::GetTexture(m_spriteSheetName);
@@ -24,6 +22,12 @@ void Animation::playAnimation(int velocity, SDL_FRect dst, float angle, int scal
 		dst.h = src->h * scale;
 		SDL_RenderCopyExF(Renderer, Texture, src, &dst, angle, 0, SDL_FLIP_HORIZONTAL);
 	}
+}
+void Animation::playAnimation(int velocity)
+{
+	
+	m_animationDone = false;
+	
 	if (m_timerAnimation >= velocity)
 	{
 		m_timerAnimation = 0;

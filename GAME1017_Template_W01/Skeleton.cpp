@@ -8,7 +8,7 @@
 Skeleton::Skeleton(SDL_Rect s, SDL_FRect d, const char* p, std::string k, AnimationParameters animationP) : Enemy(s,d,p,k,animationP)
 {
 	m_scaleRendering = 6.0f;
-	m_collisionBox = { m_centerPoint.x - 20,m_centerPoint.y - 40,40,80 };
+	updateCollisionBox(150.0f, 250.0f, -112.0f, -170.0f);
 	m_vel.x = 0;
 	TEMA::RegisterSpriteSheet("Img/skeletonSheet.txt", "Img/skeletonSheet.png", "skeletonSheet");
 	m_spritesheet = TEMA::GetSpriteSheet("skeletonSheet");
@@ -25,13 +25,13 @@ Skeleton::Skeleton(SDL_Rect s, SDL_FRect d, const char* p, std::string k, Animat
 
 void Skeleton::Render()
 {
-	m_currentAnimation->playAnimation(10, m_dst, 0, m_scaleRendering);
+	m_currentAnimation->RenderAnimation(m_dst, 0, m_scaleRendering);
 }
 
 void Skeleton::Update()
 {
 	Move(-LevelManager::velocity + m_vel.x, 0);
-	//Animate();
+	m_currentAnimation->playAnimation(10);
 }
 
 void Skeleton::HandleEvents()
