@@ -30,6 +30,7 @@ void PlayState::Update()
 	if (!m_pause) {
 		Display::Instance()->Update();
 		LevelManager::UpdateLevel();
+
 	}
 }
 
@@ -109,7 +110,7 @@ void PlayState::Enter()
 	TEMA::RegisterTexture("Img/adventurer2.png", "player2");
 	Display::Instance()->getPlayers()->getList().push_back(new  Player({ 0,0,50,37 }, { WIDTH / 3,HEIGHT*0.95 ,321,486 }, "Img/adventurer1.png", "player", params));
 
-	Display::Instance()->getEnemies()->getList().push_back(new  Skeleton({ 0,0,22,33 }, { WIDTH *1.2,HEIGHT*0.95,321,600 }, "Img/skeletonSheet.png", "skeleton", params));
+	//Display::Instance()->getEnemies()->getList().push_back(new  Skeleton({ 0,0,22,33 }, { WIDTH *1.2,HEIGHT*0.95,321,600 }, "Img/skeletonSheet.png", "skeleton", params));
 	
 	//LABELS
 	Display::Instance()->getListLabels().push_back(new ScoreLabel("alpha", 10, 10, "SCORE: "));
